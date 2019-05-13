@@ -7,33 +7,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="416.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane prefHeight="428.0" prefWidth="912.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ciclos.ControladorCiclos">
    <children>
-      <AnchorPane layoutX="-2.0" layoutY="-6.0" prefHeight="428.0" prefWidth="912.0">
-         <children>
-            <TableView layoutX="23.0" layoutY="173.0" prefHeight="200.0" prefWidth="873.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="Clave" />
-                <TableColumn prefWidth="84.0" text="Nombre" />
-                  <TableColumn prefWidth="92.0" text="Familia Prof" />
-                  <TableColumn prefWidth="84.0" text="Clave Familia" />
-                  <TableColumn prefWidth="180.0" text="Capacidades Terminales" />
-                  <TableColumn prefWidth="180.0" text="Act Formativo-Productivas" />
-                  <TableColumn prefWidth="180.0" text="Criterios de Evaluación" />
-              </columns>
-            </TableView>
-            <Button layoutX="844.0" layoutY="386.0" mnemonicParsing="false" text="Volver" />
-            <Text layoutX="40.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Familia Prof " />
-            <TextField layoutX="113.0" layoutY="137.0" />
-            <Text layoutX="286.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clave" />
-            <TextField layoutX="327.0" layoutY="137.0" />
-            <Button layoutX="773.0" layoutY="137.0" mnemonicParsing="false" text="Filtrar" />
-            <Text layoutX="499.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno" />
-            <TextField layoutX="572.0" layoutY="137.0" />
-            <Button layoutX="163.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" text="Crear nuevo registro" />
-            <Button layoutX="608.0" layoutY="76.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" text="Modificar registro" />
-            <Text layoutX="419.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión Ciclos" />
-         </children>
-      </AnchorPane>
+      <TableView fx:id="ciclos" layoutX="23.0" layoutY="173.0" prefHeight="200.0" prefWidth="873.0">
+        <columns>
+          <TableColumn fx:id="ColClave" prefWidth="75.0" text="Clave" />
+          <TableColumn fx:id="ColNombre" prefWidth="84.0" text="Nombre" />
+            <TableColumn fx:id="ColFamilia" prefWidth="92.0" text="Familia Prof" />
+            <TableColumn fx:id="ColClave_Fam" prefWidth="84.0" text="Clave Familia" />
+            <TableColumn fx:id="ColCap_Term" prefWidth="180.0" text="Capacidades Terminales" />
+            <TableColumn fx:id="ColAct_FP" prefWidth="180.0" text="Act Formativo-Productivas" />
+            <TableColumn fx:id="ColCrit" prefWidth="180.0" text="Criterios de Evaluación" />
+        </columns>
+      </TableView>
+      <Button fx:id="volver" layoutX="844.0" layoutY="386.0" mnemonicParsing="false" text="Volver" />
+      <Text layoutX="40.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Familia Prof " />
+      <TextField fx:id="familiaprof" layoutX="113.0" layoutY="137.0" />
+      <Text layoutX="286.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clave" />
+      <TextField fx:id="clave" layoutX="327.0" layoutY="137.0" />
+      <Button fx:id="filtrar" layoutX="773.0" layoutY="137.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" />
+      <Text layoutX="499.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno" />
+      <TextField fx:id="nif_al" layoutX="572.0" layoutY="137.0" />
+      <Button fx:id="nuevo" layoutX="163.0" layoutY="76.0" mnemonicParsing="false" onAction="#crearCiclo" prefHeight="30.0" prefWidth="125.0" text="Crear nuevo registro" />
+      <Button fx:id="modificar" layoutX="608.0" layoutY="76.0" mnemonicParsing="false" onAction="#modificarCiclo" prefHeight="30.0" prefWidth="125.0" text="Modificar registro" />
+      <Text layoutX="419.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión Ciclos" />
    </children>
 </AnchorPane>

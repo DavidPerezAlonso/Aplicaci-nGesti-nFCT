@@ -21,8 +21,8 @@ public class Empresa {
 		super();
 		this.nConv = nConv;
 		this.representante = representante;
-		NIF_REP = nIF_REP;
-		CIF = cIF;
+		this.NIF_REP = nIF_REP;
+		this.CIF = cIF;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.cp = cp;

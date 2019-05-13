@@ -61,6 +61,8 @@ public class ControladorCrearE {
 	
 	public void crearEmpresa() throws SQLException {
         
+		ConexionBBDD insertar = new ConexionBBDD();
+		
 		if(!n_conv.getText().equals("") && n_conv.getText() != null && !representante.getText().equals("") && representante.getText() != null && !NIF_REP.getText().equals("") && NIF_REP.getText() != null && !CIF.getText().equals("") && CIF.getText() != null && !nombre.getText().equals("") && nombre.getText() != null && !direccion.getText().equals("") && direccion.getText() != null && !cp.getText().equals("") && cp.getText() != null && !ciudad.getText().equals("") && ciudad.getText() != null  && !provincia.getText().equals("") && provincia.getText() != null && !pais.getText().equals("") && pais.getText() != null && !telefono.getText().equals("") && telefono.getText() != null && !fax.getText().equals("") && fax.getText() != null && !fecha_conv.getText().equals("") && fecha_conv.getText() != null) {
 		String convtexto = n_conv.getText();
 		String reptexto = representante.getText();
@@ -76,7 +78,7 @@ public class ControladorCrearE {
         String faxtexto = fax.getText();
         String fechatexto = fecha_conv.getText();
         
-        ConexionBBDD.insertarEmpresa(convtexto, reptexto, nifreptexto, ciftexto, nomtexto, dirtexto, cptexto, ciutexto, provtexto, paistexto, teltexto, faxtexto, fechatexto);
+        insertar.insertarEmpresa(convtexto, reptexto, nifreptexto, ciftexto, nomtexto, dirtexto, cptexto, ciutexto, provtexto, paistexto, teltexto, faxtexto, fechatexto);
         
 		}
 		

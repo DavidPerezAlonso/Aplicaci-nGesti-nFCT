@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Menu {
@@ -85,7 +86,7 @@ public void intefazTutores(ActionEvent event) throws IOException{
 public void intefazAsignar(ActionEvent event) throws IOException{
 	
 	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/asignar/InterfazAsignar.fxml"));
-    AnchorPane ventanaDos = (AnchorPane) loader.load();
+    GridPane ventanaDos = (GridPane) loader.load();
     Stage ventana = new Stage();
     ventana.setTitle("Asignar");
     Scene scene = new Scene(ventanaDos);

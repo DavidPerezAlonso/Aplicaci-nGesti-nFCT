@@ -106,6 +106,45 @@ public class ConexionBBDD {
 			return data; 
 		}
 	
+	public static ObservableList<Ciclo> ConsultaC() {
+		
+		 ObservableList<Ciclo> data = FXCollections.observableArrayList();
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT * FROM " + usr + ".CICLOS");
+				while(rset.next()) {
+					Ciclo datos = (new Ciclo ( rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7)));
+					data.add(datos);
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return data; 
+		}
+	
+	public static ObservableList<TutorCentro> ConsultaTC() {
+		
+		 ObservableList<TutorCentro> data = FXCollections.observableArrayList();
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT * FROM " + usr + ".TUTORES_CENTRO");
+				while(rset.next()) {
+					TutorCentro datos = (new TutorCentro ( rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5)));
+					data.add(datos);
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return data; 
+		}
 	
 	public static void insertarAlumno(String NIF, String nombre, String apellidos, String direccion, String ciudad, String cp, String provincia, String telefono, String email) throws SQLException{
 		
@@ -144,7 +183,7 @@ public class ConexionBBDD {
 			try {
 			
 				stmt.executeUpdate("INSERT INTO " + usr + ".EMPRESAS VALUES ('"+ nConv + "','" + representante + "','" + NIF_REP + "','" + CIF + "','" + nombre + "','" + direccion + "','" + cp + "','" + ciudad + "','" + provincia + "','" + pais + "','" + telefono + "','" + fax + "','" + fecha_conv + "')");
-			
+				
 				}catch(SQLException s) {
 					s.printStackTrace();
 				}
@@ -166,6 +205,85 @@ public class ConexionBBDD {
 				}
 
 				stmt.close();
+	}
+	
+	public static void insertarCiclo(String clave, String nombre, String familia, String clave_fam, String capacidades, String actividades, String criterios) throws SQLException{
+		
+		Statement stmt = conexion.createStatement();
 
+			try {
+				
+				stmt.executeUpdate("INSERT INTO " + usr + ".CICLOS VALUES ('"+ clave + "','" + nombre + "','" + familia + "','" + clave_fam + "','" + capacidades + "','" + actividades + "','" + criterios + "')");
+				
+				}catch(SQLException s) {
+					s.printStackTrace();
+				}
+
+				stmt.close();
+				
+	}
+	
+	public static void modificarCiclo(String clave, String nombre, String familia, String clave_fam, String capacidades, String actividades, String criterios) throws SQLException{
+		
+		Statement stmt = conexion.createStatement();
+
+			try {
+				
+				stmt.executeUpdate("UPDATE " + usr + ".CICLOS SET CLAVE='"+ clave + "',NOMBRE='" + nombre + "',FAMILIA_PROF='" + familia + "',CLAVE_FAMILIA='" + clave_fam + "',CAP_TERM='" + capacidades + "',ACT_FORM_PROD='" + actividades + "',CRIT_EV='" + criterios + "' WHERE CLAVE='" + clave + "'");
+				
+				}catch(SQLException s) {
+					s.printStackTrace();
+				}
+
+				stmt.close();
+				
+	}
+	
+	public static void insertarTutorC(String NIF, String nombre, String telefono, String email, String cod_centro) throws SQLException{
+		
+		Statement stmt = conexion.createStatement();
+
+			try {
+				
+				stmt.executeUpdate("INSERT INTO " + usr + ".TUTORES_CENTRO VALUES ('"+ NIF + "','" + nombre + "','" + telefono + "','" + email + "','" + cod_centro + "')");
+				
+				}catch(SQLException s) {
+					s.printStackTrace();
+				}
+
+				stmt.close();
+				
+	}
+	
+	public static void modificarTutorC(String NIF, String nombre, String telefono, String email) throws SQLException{
+		
+		Statement stmt = conexion.createStatement();
+
+			try {
+				
+				stmt.executeUpdate("UPDATE " + usr + ".TUTORES_CENTRO SET NIF_TC='"+ NIF + "',NOMBRE='" + nombre + "',TELEFONO='" + telefono + "',EMAIL='" + email + "' WHERE NIF_TC='" + NIF + "'");
+				
+				}catch(SQLException s) {
+					s.printStackTrace();
+				}
+
+				stmt.close();
+				
+	}
+	
+	public static void asignarPracticas(String NIF_AL, String nconv, String NIF_TC, String NIF_TE, String fechaInicio, String fechaFin, String horasDia, String horasTotal, String horaInicioM, String horaFinM, String horaInicioT, String horaFinT) throws SQLException{
+		
+		Statement stmt = conexion.createStatement();
+
+			try {
+				
+				stmt.executeUpdate("INSERT INTO " + usr + ".SUPERVISAN VALUES ('"+ NIF_AL + "','" + nconv + "','" + NIF_TC + "','" + NIF_TE + "','" + fechaInicio + "','" + fechaFin + "','" + horasDia + "','" + horasTotal + "','" + horaInicioM + "','" + horaFinM + "','" + horaInicioT + "','" + horaFinT + "')");
+				
+				}catch(SQLException s) {
+					s.printStackTrace();
+				}
+
+				stmt.close();
+				
 	}
 }

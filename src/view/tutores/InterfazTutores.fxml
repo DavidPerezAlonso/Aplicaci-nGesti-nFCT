@@ -7,28 +7,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane prefHeight="458.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.tutores.ControladorTC">
    <children>
-      <AnchorPane layoutY="-7.0" prefHeight="458.0" prefWidth="616.0">
-         <children>
-            <TableView layoutX="126.0" layoutY="199.0" prefHeight="200.0" prefWidth="377.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="NIF" />
-                <TableColumn prefWidth="75.0" text="Nombre" />
-                  <TableColumn prefWidth="75.0" text="Teléfono" />
-                  <TableColumn prefWidth="152.0" text="e-mail" />
-              </columns>
-            </TableView>
-            <Button layoutX="143.0" layoutY="89.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" text="Crear nuevo registro" />
-            <Button layoutX="354.0" layoutY="89.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" text="Modificar registro" />
-            <Text layoutX="36.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno" />
-            <TextField layoutX="106.0" layoutY="155.0" />
-            <Text layoutX="281.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº Convenio" />
-            <TextField layoutX="353.0" layoutY="155.0" />
-            <Button layoutX="534.0" layoutY="155.0" mnemonicParsing="false" text="Filtrar" />
-            <Button layoutX="550.0" layoutY="418.0" mnemonicParsing="false" text="Volver" />
-            <Text layoutX="266.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión Tutores" />
-         </children>
-      </AnchorPane>
+      <TableView fx:id="tutoresc" layoutX="89.0" layoutY="203.0" prefHeight="200.0" prefWidth="442.0">
+        <columns>
+          <TableColumn fx:id="ColNIF" prefWidth="75.0" text="NIF" />
+          <TableColumn fx:id="ColNombre" prefWidth="75.0" text="Nombre" />
+            <TableColumn fx:id="ColTelefono" prefWidth="75.0" text="Teléfono" />
+            <TableColumn fx:id="ColMail" prefWidth="152.0" text="e-mail" />
+            <TableColumn fx:id="ColCentro" prefWidth="63.0" text="Centro" />
+        </columns>
+      </TableView>
+      <Button fx:id="nuevo" layoutX="143.0" layoutY="89.0" mnemonicParsing="false" onAction="#crearTutorC" prefHeight="30.0" prefWidth="125.0" text="Crear nuevo registro" />
+      <Button fx:id="modificar" layoutX="354.0" layoutY="89.0" mnemonicParsing="false" onAction="#modificarTutorC" prefHeight="30.0" prefWidth="125.0" text="Modificar registro" />
+      <Text layoutX="36.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno" />
+      <TextField fx:id="NIF_AL" layoutX="106.0" layoutY="155.0" />
+      <Text layoutX="281.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº Convenio" />
+      <TextField fx:id="nconv" layoutX="353.0" layoutY="155.0" />
+      <Button fx:id="filtrar" layoutX="534.0" layoutY="155.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" />
+      <Button fx:id="volver" layoutX="550.0" layoutY="418.0" mnemonicParsing="false" text="Volver" />
+      <Text layoutX="266.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión Tutores" />
    </children>
 </AnchorPane>

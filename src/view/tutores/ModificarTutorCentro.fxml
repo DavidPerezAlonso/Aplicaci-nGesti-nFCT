@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.tutores.ControladorCrearTC">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="362.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.tutores.ControladorModificarTC">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="101.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="465.0" minWidth="10.0" prefWidth="449.0" />
@@ -74,17 +74,17 @@
             <Insets left="300.0" top="25.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="limpiar" mnemonicParsing="false" onAction="#limpiarTexto" text="Limpiar" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <Button fx:id="reestablecer" mnemonicParsing="false" onAction="#reestablecer" text="Reestablecer" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="150.0" top="25.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="crear" mnemonicParsing="false" onAction="#crearTutorC" text="Crear" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <Button fx:id="modificar" mnemonicParsing="false" onAction="#modificarTutorC" text="Modificar" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets top="25.0" />
          </GridPane.margin>
       </Button>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Crear nuevo registro tutor centro" GridPane.columnIndex="1">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modificar registro tutor centro" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets left="100.0" />
          </GridPane.margin>
