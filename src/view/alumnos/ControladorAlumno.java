@@ -7,10 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -93,7 +95,7 @@ public void filtrar(ActionEvent event) {
 	
 	ConexionBBDD mostrar = new ConexionBBDD();
 	
-	alumno.setItems(mostrar.Consulta());
+	alumno.setItems(mostrar.ConsultaA());
 	
 }	
 
@@ -110,15 +112,31 @@ public void crearAlumno(ActionEvent event) throws IOException{
 
 public void modificarAlumno(ActionEvent event) throws IOException{
 	
-	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/alumnos/ModificarAlumno.fxml"));
-    GridPane ventanaDos = (GridPane) loader.load();
-    Stage ventana = new Stage();
-    ventana.setTitle("ModificarAlumno");
-    Scene scene = new Scene(ventanaDos);
-    ventana.setScene(scene);
-    ventana.show();
-}
-
+	Alumno selectedAlumno = alumno.getSelectionModel().getSelectedItem();
 	
+	if (selectedAlumno != null) {
+		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/alumnos/ModificarAlumno.fxml"));
+	    GridPane ventanaDos = (GridPane) loader.load();
+	    Stage ventana = new Stage();
+	    ventana.setTitle("ModificarAlumno");
+	    Scene scene = new Scene(ventanaDos);
+	    
+	    ControladorModificarA controladoraVentana2 = loader.getController();
+	    controladoraVentana2.setDatos(selectedAlumno);
+	    
+	    ventana.setScene(scene);
+	    ventana.show();
+    }
+	
+    else
+    {
+    	Alert alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Mensaje de error");
+    	alert.setHeaderText("¡ Alumno no seleccionado !");
+    	alert.setContentText("Por favor, seleccione un alumno a modificar de la tabla.");
+    	alert.showAndWait();
+    }
+
+}
 
 }
