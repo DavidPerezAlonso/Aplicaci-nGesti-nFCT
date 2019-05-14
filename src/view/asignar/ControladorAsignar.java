@@ -1,12 +1,22 @@
 package view.asignar;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
+import controller.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import model.Asignar;
 import model.ConexionBBDD;
 
 public class ControladorAsignar {
@@ -62,7 +72,7 @@ public class ControladorAsignar {
 	@FXML
 	TextField NIF_Consulta;
 	
-public void crearTutorC() throws SQLException {
+public void asignar() throws SQLException {
         
 		ConexionBBDD insertar = new ConexionBBDD();
 		
@@ -80,7 +90,7 @@ public void crearTutorC() throws SQLException {
 			String hittexto = horaInicioT.getText();
 			String hfttexto = horaFinT.getText();
 
-			insertar.asignarPracticas(nifatexto, convtexto, niftctexto, niftetexto, fitexto, fftexto, hdiatexto, totaltexto, himtexto, hfmtexto, hittexto, hfttexto);
+			insertar.asignarPracticas(fitexto, fftexto, hdiatexto, totaltexto, himtexto, hfmtexto, hittexto, hfttexto, nifatexto, niftctexto, niftetexto, convtexto);
 		}
 		
 		else {
@@ -111,6 +121,28 @@ public void crearTutorC() throws SQLException {
 		horaFinT.setText("");
 	
 	}
+	
+	
+	public void consultaAsig(ActionEvent event) throws IOException{
+		
+		ConexionBBDD mostrar = new ConexionBBDD();
+		
+		ObservableList<Asignar> datosConsulta = mostrar.consultaAsig(NIF_Consulta.getText());
+		
+		Asignar selectedAsig = datosConsulta.get(0);
+	
+		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/asignar/ModificarAsignacion.fxml"));
+	    GridPane ventanaDos = (GridPane) loader.load();
+	    Stage ventana = new Stage();
+	    ventana.setTitle("ModificarAsignacion");
+	    Scene scene = new Scene(ventanaDos);
+	    
+	    ControladorModificacion controladoraVentana2 = loader.getController();
+	    controladoraVentana2.setDatos(selectedAsig);
+		    
+	    ventana.setScene(scene);
+	    ventana.show();
+  }
 	
 	
 }

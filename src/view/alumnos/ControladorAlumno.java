@@ -108,6 +108,8 @@ public void crearAlumno(ActionEvent event) throws IOException{
     Scene scene = new Scene(ventanaDos);
     ventana.setScene(scene);
     ventana.show();
+    
+    ventana.close();
 }
 
 public void modificarAlumno(ActionEvent event) throws IOException{

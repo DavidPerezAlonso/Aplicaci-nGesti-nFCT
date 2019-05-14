@@ -146,6 +146,26 @@ public class ConexionBBDD {
 			return data; 
 		}
 	
+	public static ObservableList<Asignar> consultaAsig(String DNI) {
+		
+		 ObservableList<Asignar> data = FXCollections.observableArrayList();
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT * FROM " + usr + ".SUPERVISAN WHERE NIF_AL='" + DNI + "'");
+				while(rset.next()) {
+					Asignar datos = (new Asignar ( rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getString(9), rset.getString(10), rset.getString(11), rset.getString(12)));
+					data.add(datos);
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return data; 
+		}
+	
 	public static void insertarAlumno(String NIF, String nombre, String apellidos, String direccion, String ciudad, String cp, String provincia, String telefono, String email) throws SQLException{
 		
 		Statement stmt = conexion.createStatement();
@@ -271,13 +291,29 @@ public class ConexionBBDD {
 				
 	}
 	
-	public static void asignarPracticas(String NIF_AL, String nconv, String NIF_TC, String NIF_TE, String fechaInicio, String fechaFin, String horasDia, String horasTotal, String horaInicioM, String horaFinM, String horaInicioT, String horaFinT) throws SQLException{
+	public static void asignarPracticas(String fechaInicio, String fechaFin, String horasDia, String horasTotal, String horaInicioM, String horaFinM, String horaInicioT, String horaFinT, String NIF_AL, String NIF_TC, String NIF_TE, String nconv) throws SQLException{
 		
 		Statement stmt = conexion.createStatement();
 
 			try {
 				
-				stmt.executeUpdate("INSERT INTO " + usr + ".SUPERVISAN VALUES ('"+ NIF_AL + "','" + nconv + "','" + NIF_TC + "','" + NIF_TE + "','" + fechaInicio + "','" + fechaFin + "','" + horasDia + "','" + horasTotal + "','" + horaInicioM + "','" + horaFinM + "','" + horaInicioT + "','" + horaFinT + "')");
+				stmt.executeUpdate("INSERT INTO " + usr + ".SUPERVISAN VALUES ('"+ fechaInicio + "','" + fechaFin + "','" + horasDia + "','" + horasTotal + "','" + horaInicioM + "','" + horaFinM + "','" + horaInicioT + "','" + horaFinT + "','" +  NIF_AL + "','" + NIF_TC + "','" + NIF_TE + "','" + nconv + "')");
+				
+				}catch(SQLException s) {
+					s.printStackTrace();
+				}
+
+				stmt.close();
+				
+	}
+	
+	public static void modificarPracticas(String NIF_AL, String nconv, String NIF_TC, String NIF_TE, String fechaInicio, String fechaFin, String horasDia, String horasTotal, String horaInicioM, String horaFinM, String horaInicioT, String horaFinT) throws SQLException{
+		
+		Statement stmt = conexion.createStatement();
+
+			try {
+				
+				stmt.executeUpdate("UPDATE " + usr + ".SUPERVISAN SET NIF_AL='"+ NIF_AL + "',NIF_TC='" + NIF_TC + "',NIF_TE='" + NIF_TE + "',N_CONV='" + nconv + "',FECHA_INICIO='" + fechaInicio + "',FECHA_FIN='" + fechaFin + "',HORAS_DIA='" + horasDia + "',HORAS_TOTALES='" + horasTotal + "',HORA_INICIO_M='" + horaInicioM + "',HORA_FIN_M='" + horaFinM + "',HORA_INICIO_T='" + horaInicioT + "',HORA_FIN_T='" + horaFinT + "')");
 				
 				}catch(SQLException s) {
 					s.printStackTrace();

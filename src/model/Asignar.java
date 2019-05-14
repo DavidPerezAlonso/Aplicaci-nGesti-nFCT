@@ -2,10 +2,7 @@ package model;
 
 public class Asignar {
 	
-	private String NIF_AL;
-	private String NIF_TC;
-	private String NIF_TE;
-	private String nconv;
+
 	private String fechaInicio;
 	private String fechaFin;
 	private String horasDia;
@@ -14,15 +11,14 @@ public class Asignar {
 	private String horaFinM;
 	private String horaInicioT;
 	private String horaFinT;
+	private String NIF_AL;
+	private String NIF_TC;
+	private String NIF_TE;
+	private String nconv;
 	
-	public Asignar(String nIF_AL, String nIF_TC, String nIF_TE, String nconv, String fechaInicio, String fechaFin,
-			String horasDia, String horasTotales, String horaInicioM, String horaFinM, String horaInicioT,
-			String horaFinT) {
+	public Asignar(String fechaInicio, String fechaFin, String horasDia, String horasTotales, String horaInicioM, String horaFinM, String horaInicioT, String horaFinT, String nIF_AL, String nIF_TC, String nIF_TE, String nconv) {
 		super();
-		NIF_AL = nIF_AL;
-		NIF_TC = nIF_TC;
-		NIF_TE = nIF_TE;
-		this.nconv = nconv;
+
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.horasDia = horasDia;
@@ -31,6 +27,10 @@ public class Asignar {
 		this.horaFinM = horaFinM;
 		this.horaInicioT = horaInicioT;
 		this.horaFinT = horaFinT;
+		this.NIF_AL = nIF_AL;
+		this.NIF_TC = nIF_TC;
+		this.NIF_TE = nIF_TE;
+		this.nconv = nconv;
 	}
 
 	public String getNIF_AL() {
