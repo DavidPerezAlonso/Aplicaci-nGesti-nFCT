@@ -374,4 +374,43 @@ public class ConexionBBDD {
 				stmt.close();
 				
 	}
+	
+	public static Empresa anexoEmpresa(String nconv) {
+		
+		 Empresa data = null;
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT * FROM " + usr + ".EMPRESAS WHERE N_CONV='" + nconv + "'");
+				while(rset.next()) {
+					data = (new Empresa ( rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getString(9), rset.getString(10), rset.getString(11), rset.getString(12), rset.getString(13)));
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return data;
+
+		}
+	
+	public static Centro anexoCentro() {
+		
+		 Centro data = null;
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT * FROM " + usr + ".CENTROS WHERE COD_CENTRO='23457'");
+				while(rset.next()) {
+					data = (new Centro ( rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getString(9), rset.getString(10), rset.getString(11), rset.getString(12)));
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return data; 
+		}
 }
