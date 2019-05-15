@@ -78,8 +78,10 @@ public class ControladorModificacion {
 			String hfmtexto = horaFinM.getText();
 			String hittexto = horaInicioT.getText();
 			String hfttexto = horaFinT.getText();
+			
+			String AL_Anterior = datosmodificar.getNIF_AL();
 
-			modificar.modificarPracticas(nifatexto, convtexto, niftctexto, niftetexto, fitexto, fftexto, hdiatexto, totaltexto, himtexto, hfmtexto, hittexto, hfttexto);
+			modificar.modificarPracticas(nifatexto, convtexto, niftctexto, niftetexto, fitexto, fftexto, hdiatexto, totaltexto, himtexto, hfmtexto, hittexto, hfttexto, AL_Anterior);
 		}
 		
 		else {

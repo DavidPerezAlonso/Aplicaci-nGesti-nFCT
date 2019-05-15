@@ -6,23 +6,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.anexos.ControladoraAnexos">
    <children>
       <AnchorPane prefHeight="312.0" prefWidth="431.0">
          <children>
-            <Text layoutX="158.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de anexos" />
-            <Button layoutX="370.0" layoutY="278.0" mnemonicParsing="false" text="Volver" />
-            <TextField layoutX="206.0" layoutY="118.0" />
-            <Text layoutX="97.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno" />
-            <TextField layoutX="207.0" layoutY="153.0" />
-            <Text layoutX="81.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número Conevnio" />
-            <Text layoutX="89.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce los datos para generar sus anexos:" />
-            <RadioButton layoutX="70.0" layoutY="218.0" mnemonicParsing="false" text="Anexo 1" />
-            <RadioButton layoutX="71.0" layoutY="257.0" mnemonicParsing="false" text="Anexo 2" />
-            <RadioButton layoutX="160.0" layoutY="218.0" mnemonicParsing="false" text="Anexo 3" />
-            <RadioButton layoutX="162.0" layoutY="257.0" mnemonicParsing="false" text="Anexo 4" />
-            <RadioButton layoutX="263.0" layoutY="218.0" mnemonicParsing="false" text="Todos" />
-            <Button layoutX="263.0" layoutY="253.0" mnemonicParsing="false" text="Generar" />
+            <Text layoutX="158.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de anexos" />
+            <Button fx:id="volver" layoutX="365.0" layoutY="273.0" mnemonicParsing="false" text="Volver" />
+            <TextField fx:id="NIF_AL" layoutX="206.0" layoutY="113.0" />
+            <Text layoutX="97.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno" />
+            <TextField fx:id="nconv" layoutX="207.0" layoutY="148.0" />
+            <Text layoutX="81.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número Convenio" />
+            <Text layoutX="89.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce los datos para generar sus anexos:" />
+            <RadioButton fx:id="anex1" layoutX="70.0" layoutY="213.0" mnemonicParsing="false" text="Anexo 1" />
+            <RadioButton fx:id="anex2" layoutX="71.0" layoutY="252.0" mnemonicParsing="false" text="Anexo 2" />
+            <RadioButton fx:id="anex3" layoutX="160.0" layoutY="213.0" mnemonicParsing="false" text="Anexo 3" />
+            <RadioButton fx:id="anex4" layoutX="162.0" layoutY="252.0" mnemonicParsing="false" text="Anexo 4" />
+            <RadioButton fx:id="todos" layoutX="263.0" layoutY="213.0" mnemonicParsing="false" text="Todos" />
+            <Button fx:id="generar" layoutX="263.0" layoutY="248.0" mnemonicParsing="false" text="Generar" />
          </children>
       </AnchorPane>
    </children>

@@ -39,8 +39,8 @@
       <TextField fx:id="ciudad" layoutX="845.0" layoutY="147.0" />
       <Text layoutX="797.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad" />
       <Button fx:id="filtrar" layoutX="1050.0" layoutY="147.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" />
-      <Button layoutX="867.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Modificar datos tutor" />
-      <Button layoutX="626.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Asignar nuevo tutor" />
+      <Button fx:id="modificarTE" layoutX="867.0" layoutY="77.0" mnemonicParsing="false" onAction="#modificarTutorEmpresa" prefHeight="30.0" prefWidth="150.0" text="Modificar datos tutor" />
+      <Button fx:id="crearTE" layoutX="626.0" layoutY="77.0" mnemonicParsing="false" onAction="#crearTutorEmpresa" prefHeight="30.0" prefWidth="150.0" text="Asignar nuevo tutor" />
       <Text layoutX="528.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión Empresas" />
    </children>
 </AnchorPane>

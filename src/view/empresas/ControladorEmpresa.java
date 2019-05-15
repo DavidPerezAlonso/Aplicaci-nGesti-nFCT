@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Alumno;
@@ -34,6 +35,12 @@ public class ControladorEmpresa {
 	
 	@FXML
 	Button volver;
+	
+	@FXML
+	Button crearTE;
+	
+	@FXML
+	Button modificarTE;
 	
 	@FXML
 	TextField tutorEmpresa;
@@ -90,73 +97,95 @@ public class ControladorEmpresa {
 	private TableColumn<Empresa, String> ColFecha_Conv;
 	
 	
-public void initialize() {
+	public void initialize() {
+			
+			ColConv.setCellValueFactory(new PropertyValueFactory<Empresa, String>("nConv"));
+			ColRepresentante.setCellValueFactory(new PropertyValueFactory<Empresa,String>("representante"));
+			ColNIF_Rep.setCellValueFactory(new PropertyValueFactory<Empresa,String>("NIF_REP"));
+			ColCIF.setCellValueFactory(new PropertyValueFactory<Empresa,String>("CIF"));
+			ColNombre.setCellValueFactory(new PropertyValueFactory<Empresa, String>("nombre"));
+			ColDireccion.setCellValueFactory(new PropertyValueFactory<Empresa,String>("direccion"));
+			ColCP.setCellValueFactory(new PropertyValueFactory<Empresa,String>("cp"));
+			ColCiudad.setCellValueFactory(new PropertyValueFactory<Empresa,String>("ciudad"));
+			ColProvincia.setCellValueFactory(new PropertyValueFactory<Empresa,String>("provincia"));
+			ColPais.setCellValueFactory(new PropertyValueFactory<Empresa,String>("pais"));
+			ColTelefono.setCellValueFactory(new PropertyValueFactory<Empresa,String>("telefono"));
+			ColFax.setCellValueFactory(new PropertyValueFactory<Empresa,String>("fax"));
+			ColFecha_Conv.setCellValueFactory(new PropertyValueFactory<Empresa,String>("fecha_conv"));
+			
+		}
 		
-		ColConv.setCellValueFactory(new PropertyValueFactory<Empresa, String>("nConv"));
-		ColRepresentante.setCellValueFactory(new PropertyValueFactory<Empresa,String>("representante"));
-		ColNIF_Rep.setCellValueFactory(new PropertyValueFactory<Empresa,String>("NIF_REP"));
-		ColCIF.setCellValueFactory(new PropertyValueFactory<Empresa,String>("CIF"));
-		ColNombre.setCellValueFactory(new PropertyValueFactory<Empresa, String>("nombre"));
-		ColDireccion.setCellValueFactory(new PropertyValueFactory<Empresa,String>("direccion"));
-		ColCP.setCellValueFactory(new PropertyValueFactory<Empresa,String>("cp"));
-		ColCiudad.setCellValueFactory(new PropertyValueFactory<Empresa,String>("ciudad"));
-		ColProvincia.setCellValueFactory(new PropertyValueFactory<Empresa,String>("provincia"));
-		ColPais.setCellValueFactory(new PropertyValueFactory<Empresa,String>("pais"));
-		ColTelefono.setCellValueFactory(new PropertyValueFactory<Empresa,String>("telefono"));
-		ColFax.setCellValueFactory(new PropertyValueFactory<Empresa,String>("fax"));
-		ColFecha_Conv.setCellValueFactory(new PropertyValueFactory<Empresa,String>("fecha_conv"));
+	
+	public void filtrar(ActionEvent event) {
 		
+		ConexionBBDD mostrar = new ConexionBBDD();
+		
+		empresas.setItems(mostrar.ConsultaE());
+		
+	}	
+	
+	public void crearEmpresa(ActionEvent event) throws IOException{
+		
+		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/CrearEmpresa.fxml"));
+	    GridPane ventanaDos = (GridPane) loader.load();
+	    Stage ventana = new Stage();
+	    ventana.setTitle("CrearEmpresa");
+	    Scene scene = new Scene(ventanaDos);
+	    ventana.setScene(scene);
+	    ventana.show();
 	}
 	
-
-public void filtrar(ActionEvent event) {
+	public void modificarEmpresa(ActionEvent event) throws IOException{
 	
-	ConexionBBDD mostrar = new ConexionBBDD();
 	
-	empresas.setItems(mostrar.ConsultaE());
+		Empresa selectedEmpresa = empresas.getSelectionModel().getSelectedItem();
 	
-}	
-
-public void crearEmpresa(ActionEvent event) throws IOException{
+		if (selectedEmpresa != null) {
+		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/ModificarEmpresa.fxml"));
+	    GridPane ventanaDos = (GridPane) loader.load();
+	    Stage ventana = new Stage();
+	    ventana.setTitle("ModificarEmpresa");
+	    Scene scene = new Scene(ventanaDos);
+	    
+	    ControladorModificarE controladoraVentana2 = loader.getController();
+	    controladoraVentana2.setDatos(selectedEmpresa);
+	    
+	    ventana.setScene(scene);
+	    ventana.show();
+		}
+		
+		else
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Mensaje de error");
+			alert.setHeaderText("¡ Empresa no seleccionada !");
+			alert.setContentText("Por favor, seleccione una empresa a modificar de la tabla.");
+			alert.showAndWait();
+		
+		}
+	}
 	
-	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/CrearEmpresa.fxml"));
-    GridPane ventanaDos = (GridPane) loader.load();
-    Stage ventana = new Stage();
-    ventana.setTitle("CrearEmpresa");
-    Scene scene = new Scene(ventanaDos);
-    ventana.setScene(scene);
-    ventana.show();
-}
-
-public void modificarEmpresa(ActionEvent event) throws IOException{
-
-
-	Empresa selectedEmpresa = empresas.getSelectionModel().getSelectedItem();
-
-	if (selectedEmpresa != null) {
-	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/ModificarEmpresa.fxml"));
-    GridPane ventanaDos = (GridPane) loader.load();
-    Stage ventana = new Stage();
-    ventana.setTitle("ModificarEmpresa");
-    Scene scene = new Scene(ventanaDos);
-    
-    ControladorModificarE controladoraVentana2 = loader.getController();
-    controladoraVentana2.setDatos(selectedEmpresa);
-    
-    ventana.setScene(scene);
-    ventana.show();
-}
-
-else
-{
-	Alert alert = new Alert(AlertType.ERROR);
-	alert.setTitle("Mensaje de error");
-	alert.setHeaderText("¡ Empresa no seleccionada !");
-	alert.setContentText("Por favor, seleccione una empresa a modificar de la tabla.");
-	alert.showAndWait();
-
-}
-}
+	public void crearTutorEmpresa(ActionEvent event) throws IOException{
+		
+		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/CrearTutorEmpresa.fxml"));
+	    GridPane ventanaDos = (GridPane) loader.load();
+	    Stage ventana = new Stage();
+	    ventana.setTitle("CrearTutorEmpresa");
+	    Scene scene = new Scene(ventanaDos);
+	    ventana.setScene(scene);
+	    ventana.show();
+	}
+	
+	public void modificarTutorEmpresa(ActionEvent event) throws IOException{
+		
+		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/ModificarTutorEmpresa.fxml"));
+	    AnchorPane ventanaDos = (AnchorPane) loader.load();
+	    Stage ventana = new Stage();
+	    ventana.setTitle("ModificarTutorEmpresa");
+	    Scene scene = new Scene(ventanaDos);
+	    ventana.setScene(scene);
+	    ventana.show();
+	}
 }
 
 
