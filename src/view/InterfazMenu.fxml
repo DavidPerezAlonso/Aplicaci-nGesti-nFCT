@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Menu">
@@ -11,16 +13,64 @@
          <children>
             <Button fx:id="GenerarAnexos" layoutX="98.0" layoutY="112.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="125.0" text="Generar Anexos">
                <effect>
-                  <InnerShadow color="#510404" />
-               </effect></Button>
-            <Button fx:id="GestionAlumnos" layoutX="298.0" layoutY="114.0" mnemonicParsing="false" onAction="#intefazAlumnos" prefHeight="40.0" prefWidth="125.0" text="Gestión Alumnos" />
-            <Button fx:id="GestionTutores" layoutX="298.0" layoutY="184.0" mnemonicParsing="false" onAction="#intefazTutores" prefHeight="40.0" prefWidth="125.0" text="Gestión Tutores" />
-            <Button fx:id="GestionCiclos" layoutX="99.0" layoutY="184.0" mnemonicParsing="false" onAction="#intefazCiclos" prefHeight="40.0" prefWidth="125.0" text="Gestión Ciclos" />
-            <Button fx:id="GestionEmpresas" layoutX="488.0" layoutY="114.0" mnemonicParsing="false" onAction="#intefazEmpresas" prefHeight="40.0" prefWidth="125.0" text="Gestión Empresas" />
-            <Button fx:id="AsignarPracticas" layoutX="488.0" layoutY="184.0" mnemonicParsing="false" onAction="#intefazAsignar" prefHeight="40.0" prefWidth="125.0" text="Asignar Prácticas" />
-            <Button fx:id="Logout" layoutX="562.0" layoutY="14.0" mnemonicParsing="false" text="Cerrar Sesión" />
-            <Text layoutX="298.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menú Principal" />
+                  <DropShadow color="#ab1717" />
+               </effect>
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font></Button>
+            <Button fx:id="GestionAlumnos" layoutX="298.0" layoutY="114.0" mnemonicParsing="false" onAction="#intefazAlumnos" prefHeight="40.0" prefWidth="125.0" text="Gestión Alumnos">
+               <effect>
+                  <DropShadow color="#ab1717" />
+               </effect>
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font></Button>
+            <Button fx:id="GestionTutores" layoutX="298.0" layoutY="184.0" mnemonicParsing="false" onAction="#intefazTutores" prefHeight="40.0" prefWidth="125.0" text="Gestión Tutores">
+               <effect>
+                  <DropShadow color="#ab1717" />
+               </effect>
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font></Button>
+            <Button fx:id="GestionCiclos" layoutX="99.0" layoutY="184.0" mnemonicParsing="false" onAction="#intefazCiclos" prefHeight="40.0" prefWidth="125.0" text="Gestión Ciclos">
+               <effect>
+                  <DropShadow color="#ab1717" />
+               </effect>
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font></Button>
+            <Button fx:id="GestionEmpresas" layoutX="488.0" layoutY="114.0" mnemonicParsing="false" onAction="#intefazEmpresas" prefHeight="40.0" prefWidth="125.0" text="Gestión Empresas">
+               <effect>
+                  <DropShadow color="#ab1717" />
+               </effect>
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font></Button>
+            <Button fx:id="AsignarPracticas" layoutX="488.0" layoutY="184.0" mnemonicParsing="false" onAction="#intefazAsignar" prefHeight="40.0" prefWidth="125.0" text="Asignar Prácticas">
+               <effect>
+                  <DropShadow color="#ab1717" />
+               </effect>
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font></Button>
+            <Button fx:id="Logout" layoutX="570.0" layoutY="18.0" mnemonicParsing="false" text="Cerrar Sesión">
+               <effect>
+                  <DropShadow color="#09513c" />
+               </effect>
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font></Button>
+            <Text fill="#ab1717" layoutX="301.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menú Principal">
+               <font>
+                  <Font name="Trebuchet MS" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#09513c" />
+               </effect></Text>
          </children>
+         <effect>
+            <ColorAdjust />
+         </effect>
       </AnchorPane>
    </children>
 </AnchorPane>
