@@ -147,16 +147,16 @@ public class ConexionBBDD {
 			return data; 
 		}
 	
-	public static ObservableList<Asignar> consultaAsig(String DNI) {
+	public static Asignar consultaAsig(String DNI) {
 		
-		 ObservableList<Asignar> data = FXCollections.observableArrayList();
+		 Asignar data = null;
 			
 			try {
 				Statement stmt = conexion.createStatement();
 				ResultSet rset = stmt.executeQuery("SELECT * FROM " + usr + ".SUPERVISAN WHERE NIF_AL='" + DNI + "'");
 				while(rset.next()) {
-					Asignar datos = (new Asignar ( rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getString(9), rset.getString(10), rset.getString(11), rset.getString(12)));
-					data.add(datos);
+					data = (new Asignar ( rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8), rset.getString(9), rset.getString(10), rset.getString(11), rset.getString(12)));
+
 				}
 				rset.close();
 				stmt.close();
@@ -396,6 +396,46 @@ public class ConexionBBDD {
 
 		}
 	
+	public static TutorCentro anexoTC(String NIF_TC) {
+		
+		 TutorCentro data = null;
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT * FROM " + usr + ".TUTORES_CENTRO WHERE NIF_TC='" + NIF_TC + "'");
+				while(rset.next()) {
+					data = (new TutorCentro ( rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5)));
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return data;
+
+		}
+	
+	public static TutorEmpresa anexoTE(String NIF_TE) {
+		
+		 TutorEmpresa data = null;
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT * FROM " + usr + ".TUTORES_EMPRESA WHERE NIF_TE='" + NIF_TE + "'");
+				while(rset.next()) {
+					data = (new TutorEmpresa ( rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5)));
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return data;
+
+		}
+	
 	public static Centro anexoCentro() {
 		
 		 Centro data = null;
@@ -415,7 +455,26 @@ public class ConexionBBDD {
 			return data; 
 		}
 	
-	public static ObservableList<String> anexoCiclo() {
+	public static Ciclo anexoCiclo(String ciclo) {
+		
+		 Ciclo data = null;
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT * FROM " + usr + ".CICLOS WHERE NOMBRE='" + ciclo + "'");
+				while(rset.next()) {
+					data = (new Ciclo ( rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6), rset.getString(7)));
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return data; 
+		}
+	
+	public static ObservableList<String> anexoCicloNom() {
 		
 		ObservableList<String> ciclos = FXCollections.observableArrayList();
 			
@@ -459,7 +518,7 @@ public class ConexionBBDD {
 			
 			try {
 				Statement stmt = conexion.createStatement();
-				ResultSet rset = stmt.executeQuery("SELECT A.NIF_AL, A.NOMBRE, A.APELLIDOS FROM " + usr + ".ALUMNOS A, " + usr + ".CURSAN C WHERE A.NIF_AL=C.NIF_AL AND C.CURSO='"+ curso +"' AND CLAVE=(SELECT CLAVE FROM CICLOS WHERE NOMBRE='" + ciclo + "')");
+				ResultSet rset = stmt.executeQuery("SELECT A.NIF_AL, A.NOMBRE, A.APELLIDOS FROM " + usr + ".ALUMNOS A, " + usr + ".CURSAN C, " + usr + ".SUPERVISAN S WHERE A.NIF_AL=C.NIF_AL AND A.NIF_AL=S.NIF_AL AND C.CURSO='"+ curso +"' AND CLAVE=(SELECT CLAVE FROM " + usr + ".CICLOS WHERE NOMBRE='" + ciclo + "')");
 				while(rset.next()) {
 					Alumno datos = (new Alumno ( rset.getString(1), rset.getString(2), rset.getString(3)));
 					data.add(datos);

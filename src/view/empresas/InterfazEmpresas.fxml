@@ -4,10 +4,15 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="402.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.empresas.ControladorEmpresa">
+<AnchorPane prefHeight="402.0" prefWidth="1150.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.empresas.ControladorEmpresa">
    <children>
       <AnchorPane layoutX="-159.0" layoutY="-134.0" prefHeight="200.0" prefWidth="200.0" />
       <TableView fx:id="empresas" layoutX="15.0" layoutY="186.0" prefHeight="166.0" prefWidth="1119.0">
@@ -27,20 +32,100 @@
             <TableColumn fx:id="ColFecha_Conv" prefWidth="92.0" text="Fecha_Conv" />
         </columns>
       </TableView>
-      <Button fx:id="nuevo" layoutX="149.0" layoutY="77.0" mnemonicParsing="false" onAction="#crearEmpresa" prefHeight="30.0" prefWidth="150.0" text="Crear nuevo registro" />
-      <Button fx:id="modificar" layoutX="385.0" layoutY="77.0" mnemonicParsing="false" onAction="#modificarEmpresa" prefHeight="30.0" prefWidth="150.0" text="Modificar registro" />
-      <Button fx:id="volver" layoutX="1085.0" layoutY="365.0" mnemonicParsing="false" text="Volver" />
+      <Button fx:id="nuevo" layoutX="149.0" layoutY="77.0" mnemonicParsing="false" onAction="#crearEmpresa" prefHeight="30.0" prefWidth="150.0" text="Crear nuevo registro" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <Button fx:id="modificar" layoutX="385.0" layoutY="77.0" mnemonicParsing="false" onAction="#modificarEmpresa" prefHeight="30.0" prefWidth="150.0" text="Modificar registro" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <Button fx:id="volver" layoutX="1085.0" layoutY="365.0" mnemonicParsing="false" text="Volver" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#09513c">
+               <input>
+                  <InnerShadow color="#174917" />
+               </input>
+            </DropShadow>
+         </effect></Button>
       <TextField fx:id="tutorEmpresa" layoutX="104.0" layoutY="147.0" />
-      <Text layoutX="18.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor Empresa" />
-      <Text layoutX="305.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor" />
+      <Text fill="#822828" layoutX="18.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor Empresa">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></Text>
+      <Text fill="#822828" layoutX="305.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></Text>
       <TextField fx:id="tutor" layoutX="341.0" layoutY="147.0" />
       <TextField fx:id="conv" layoutX="599.0" layoutY="147.0" />
-      <Text layoutX="537.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año Conv" />
+      <Text fill="#822828" layoutX="537.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año Conv">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></Text>
       <TextField fx:id="ciudad" layoutX="845.0" layoutY="147.0" />
-      <Text layoutX="797.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad" />
-      <Button fx:id="filtrar" layoutX="1050.0" layoutY="147.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" />
-      <Button fx:id="modificarTE" layoutX="867.0" layoutY="77.0" mnemonicParsing="false" onAction="#modificarTutorEmpresa" prefHeight="30.0" prefWidth="150.0" text="Modificar datos tutor" />
-      <Button fx:id="crearTE" layoutX="626.0" layoutY="77.0" mnemonicParsing="false" onAction="#crearTutorEmpresa" prefHeight="30.0" prefWidth="150.0" text="Asignar nuevo tutor" />
-      <Text layoutX="528.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión Empresas" />
+      <Text fill="#822828" layoutX="797.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></Text>
+      <Button fx:id="filtrar" layoutX="1050.0" layoutY="147.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <Button fx:id="modificarTE" layoutX="867.0" layoutY="77.0" mnemonicParsing="false" onAction="#modificarTutorEmpresa" prefHeight="30.0" prefWidth="150.0" text="Modificar datos tutor" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <Button fx:id="crearTE" layoutX="626.0" layoutY="77.0" mnemonicParsing="false" onAction="#crearTutorEmpresa" prefHeight="30.0" prefWidth="150.0" text="Asignar nuevo tutor" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <Text fill="#822828" layoutX="528.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión Empresas">
+         <font>
+            <Font name="Trebuchet MS" size="18.0" />
+         </font></Text>
+      <ImageView fx:id="logo" fitHeight="70.0" fitWidth="102.0" layoutX="1035.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

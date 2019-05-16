@@ -6,37 +6,139 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="599.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.anexos.ControladoraAnexos">
+<AnchorPane prefHeight="637.0" prefWidth="435.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.anexos.ControladoraAnexos">
    <children>
-      <Text layoutX="158.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de anexos" />
-      <Button fx:id="volver" layoutX="366.0" layoutY="561.0" mnemonicParsing="false" text="Volver" />
-      <Text layoutX="53.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empresa:" />
+      <Text fill="#822828" layoutX="156.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de anexos">
+         <font>
+            <Font name="Trebuchet MS" size="18.0" />
+         </font></Text>
+      <Button fx:id="volver" layoutX="370.0" layoutY="600.0" mnemonicParsing="false" text="Volver" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#09513c">
+               <input>
+                  <InnerShadow color="#174917" />
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <Text fill="#822828" layoutX="52.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empresa:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></Text>
+      <Text fx:id="TextoEmpresa" layoutX="115.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fill="#822828" layoutX="52.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor Empresa:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></Text>
+      <Text fx:id="TextoTE" layoutX="145.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fill="#822828" layoutX="53.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor Centro:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></Text>
+      <Text fx:id="TextoTC" layoutX="142.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <TextField fx:id="nombreAnexo" layoutX="206.0" layoutY="458.0" />
-      <Text layoutX="88.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del anexo:" />
-      <Text layoutX="89.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona un alumno para generar sus anexos:" />
-      <RadioButton fx:id="anex1" layoutX="105.0" layoutY="501.0" mnemonicParsing="false" text="Anexo 1" />
-      <RadioButton fx:id="anex2" layoutX="105.0" layoutY="540.0" mnemonicParsing="false" text="Anexo 2" />
-      <RadioButton fx:id="todos" layoutX="236.0" layoutY="501.0" mnemonicParsing="false" text="Todos" />
-      <Button fx:id="generar" layoutX="235.0" layoutY="536.0" mnemonicParsing="false" onAction="#generar" text="Generar" />
+      <Text fill="#822828" layoutX="88.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del anexo:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></Text>
+      <Text fill="#822828" layoutX="91.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona un alumno para generar sus anexos:" />
+      <RadioButton fx:id="anex1" layoutX="45.0" layoutY="504.0" mnemonicParsing="false" text="Anexo 1" textFill="#822828">
+         <toggleGroup>
+            <ToggleGroup fx:id="anexos" />
+         </toggleGroup>
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="anex2" layoutX="133.0" layoutY="504.0" mnemonicParsing="false" text="Anexo 2" textFill="#822828" toggleGroup="$anexos">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="todos" layoutX="133.0" layoutY="556.0" mnemonicParsing="false" text="Todos" textFill="#822828" toggleGroup="$anexos">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></RadioButton>
+      <Button fx:id="generar" layoutX="223.0" layoutY="564.0" mnemonicParsing="false" onAction="#generar" text="Generar" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect></Button>
       <ChoiceBox fx:id="ciclos" layoutX="52.0" layoutY="139.0" prefWidth="150.0" />
       <ChoiceBox fx:id="cursos" layoutX="240.0" layoutY="139.0" prefWidth="150.0" />
-      <Text layoutX="114.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciclo" />
-      <Text layoutX="304.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso" />
-      <TableView fx:id="alumnos" layoutX="52.0" layoutY="218.0" prefHeight="122.0" prefWidth="337.0">
+      <Text fill="#822828" layoutX="114.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciclo">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></Text>
+      <Text fill="#822828" layoutX="304.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></Text>
+      <TableView fx:id="alumnos" layoutX="52.0" layoutY="218.0" onMouseClicked="#mostrarDatos" prefHeight="122.0" prefWidth="337.0">
         <columns>
           <TableColumn fx:id="ColNIF" prefWidth="81.0" text="NIF" />
           <TableColumn fx:id="ColNom" prefWidth="103.0" text="Nombre" />
             <TableColumn fx:id="ColApe" prefWidth="152.0" text="Apellidos" />
         </columns>
       </TableView>
-      <Button fx:id="filtrar" layoutX="197.0" layoutY="178.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" />
-      <Text layoutX="116.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="53.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor Empresa:" />
-      <Text layoutX="146.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text layoutX="54.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor Centro:" />
-      <Text layoutX="143.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Button fx:id="filtrar" layoutX="197.0" layoutY="178.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect></Button>
+      <RadioButton fx:id="anex3" layoutX="231.0" layoutY="504.0" mnemonicParsing="false" text="Anexo 3" textFill="#822828" toggleGroup="$anexos">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="anex4" layoutX="326.0" layoutY="504.0" mnemonicParsing="false" text="Anexo 4" textFill="#822828" toggleGroup="$anexos">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="anex5" layoutX="45.0" layoutY="531.0" mnemonicParsing="false" text="Anexo 5" textFill="#822828" toggleGroup="$anexos">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="anex6" layoutX="133.0" layoutY="531.0" mnemonicParsing="false" text="Anexo 6" textFill="#822828" toggleGroup="$anexos">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="anex7" layoutX="231.0" layoutY="531.0" mnemonicParsing="false" text="Anexo 7" textFill="#822828" toggleGroup="$anexos">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="anex8" layoutX="326.0" layoutY="531.0" mnemonicParsing="false" text="Anexo 8" textFill="#822828" toggleGroup="$anexos">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="anex9" layoutX="45.0" layoutY="557.0" mnemonicParsing="false" text="Anexo 9" textFill="#822828" toggleGroup="$anexos">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font></RadioButton>
+      <ImageView fitHeight="70.0" fitWidth="102.0" layoutX="304.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

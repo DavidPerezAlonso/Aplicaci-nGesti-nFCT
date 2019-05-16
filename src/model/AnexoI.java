@@ -14,6 +14,21 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import java.io.FileNotFoundException;
+import com.itextpdf.text.Image;
+
+import java.io.FileOutputStream;
+
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
 public class AnexoI {
 
 
@@ -112,7 +127,7 @@ public class AnexoI {
 						9));
 
 				documento.add(p6);
-				Paragraph p7 = new Paragraph("provincia de " + this.coledata.getProvincia() + " calle," + this.coledata.getDireccion() + "\nC.P. " + this.coledata.getCP() + ", CIF " + this.coledata.getCIF() + ", Telefono " + this.coledata.getTelefono() + ", Fax" + this.coledata.getFax(),
+				Paragraph p7 = new Paragraph("provincia de " + this.coledata.getProvincia() + " calle," + this.coledata.getDireccion() + "\nC.P. " + this.coledata.getCP() + ", CIF " + this.coledata.getCIF() + ", Telefono " + this.coledata.getTelefono() + ", Fax " + this.coledata.getFax(),
 						FontFactory.getFont("arial",   // fuente
 						9));
 
@@ -132,7 +147,7 @@ public class AnexoI {
 
 				documento.add(p9);
 
-				Paragraph p10 = new Paragraph("provincia de " + this.empdata.getProvinciaemp() + " calle," + this.empdata.getDireccionemp() + "\nC.P. " + this.empdata.getCPEmp() + ", CIF " + this.empdata.getCIFEmp() + ", Telefono " + this.empdata.getTelefonoEmp() + ", FaxEmp" + this.empdata.getFaxEmp(),
+				Paragraph p10 = new Paragraph("provincia de " + this.empdata.getProvinciaemp() + " calle," + this.empdata.getDireccionemp() + "\nC.P. " + this.empdata.getCPEmp() + ", CIF " + this.empdata.getCIFEmp() + ", Telefono " + this.empdata.getTelefonoEmp() + ", FaxEmp " + this.empdata.getFaxEmp(),
 						FontFactory.getFont("arial",   // fuente
 						9));
 

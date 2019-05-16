@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Alumno;
@@ -22,6 +23,9 @@ import model.ConexionBBDD;
 import view.alumnos.ControladorModificarA;
 
 public class ControladorCiclos {
+	
+	@FXML
+	ImageView logo;
 	
 	@FXML
 	Button nuevo;

@@ -16,19 +16,29 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import model.Alumno;
 import model.AnexoI;
+import model.AnexoII;
 import model.Asignar;
 import model.Centro;
+import model.Ciclo;
 import model.ConexionBBDD;
+import model.DatosAlumnos;
 import model.DatosColegio;
 import model.DatosEmpresa;
 import model.Empresa;
+import model.TutorCentro;
+import model.TutorEmpresa;
 
 public class ControladoraAnexos {
+	
+	@FXML
+	ImageView logo;
 
 	@FXML
 	Button generar;
@@ -57,14 +67,14 @@ public class ControladoraAnexos {
 	@FXML
 	TableColumn<Alumno, String> ColApe;
 	
-	@FXML
-	Text textoEmpresa;
+	@FXML 
+	Text TextoEmpresa;
 	
 	@FXML
-	Text textoTE;
+	Text TextoTC;
 	
 	@FXML
-	Text textoTC;
+	Text TextoTE;
 	
 	@FXML
 	TextField nombreAnexo;
@@ -76,10 +86,39 @@ public class ControladoraAnexos {
 	RadioButton anex2;
 	
 	@FXML
+	RadioButton anex3;
+	
+	@FXML
+	RadioButton anex4;
+	
+	@FXML
+	RadioButton anex5;
+	
+	@FXML
+	RadioButton anex6;
+	
+	@FXML
+	RadioButton anex7;
+	
+	@FXML
+	RadioButton anex8;
+	
+	@FXML
+	RadioButton anex9;
+	
+	@FXML
 	RadioButton todos;
 	
-	Empresa empresaAnex;
+	@FXML
+	ToggleGroup anexos;
+	
+	Alumno selectedAlumno;
 	Centro centroAnex;
+	Asignar asigAnex;
+	Empresa empresaAnex;
+	TutorCentro tutorAnex;
+	TutorEmpresa tutorEmpAnex;
+	Ciclo cicloAnex;
 
 	String ciclo;
 	String curso;
@@ -89,7 +128,7 @@ public class ControladoraAnexos {
 		
 		ConexionBBDD listar = new ConexionBBDD();
 		
-		ciclos.setItems(listar.anexoCiclo());
+		ciclos.setItems(listar.anexoCicloNom());
 		cursos.setItems(listar.anexoCurso());
 		
 		ColNIF.setCellValueFactory(new PropertyValueFactory<Alumno, String>("NIF"));
@@ -140,26 +179,65 @@ public class ControladoraAnexos {
 		
 	}
 	
+	public void mostrarDatos() {
+		
+		selectedAlumno = alumnos.getSelectionModel().getSelectedItem();
+		
+		ConexionBBDD datos = new ConexionBBDD();
+		
+		centroAnex = datos.anexoCentro();
+		asigAnex = datos.consultaAsig(selectedAlumno.getNIF());
+		empresaAnex = datos.anexoEmpresa(asigAnex.getNconv());
+		tutorAnex = datos.anexoTC(asigAnex.getNIF_TC());
+		tutorEmpAnex = datos.anexoTE(asigAnex.getNIF_TE());
+		cicloAnex = datos.anexoCiclo(ciclo);
+		
+		TextoEmpresa.setText(empresaAnex.getNombre());
+		TextoTC.setText(tutorAnex.getNombre());
+		TextoTE.setText(tutorEmpAnex.getNombre());
+		
+	}
+	
 	public void generar() throws SQLException, FileNotFoundException, DocumentException  {
-				
-		Alumno selectedAlumno = alumnos.getSelectionModel().getSelectedItem();
-		ObservableList<Asignar> asigAnex = FXCollections.observableArrayList();
+			
 		
 		if (!nombreAnexo.getText().equals("") && nombreAnexo.getText() != null) {
 		
 			if (selectedAlumno != null) {
 				
-				ConexionBBDD datos = new ConexionBBDD();
-				
-				centroAnex = datos.anexoCentro();
-				asigAnex = datos.consultaAsig(selectedAlumno.getNIF());
-				empresaAnex = datos.anexoEmpresa(nconv.getText());
-				DatosColegio coledata = new DatosColegio(centroAnex.getTitular(),centroAnex.getNIF_TIT(),centroAnex.getNombre(),centroAnex.getCod_centro(),centroAnex.getProvincia(),centroAnex.getDireccion(),centroAnex.getCp(),centroAnex.getCIF(),centroAnex.getTelefono(),centroAnex.getFax(),centroAnex.getCiudad());
-				DatosEmpresa empdata = new DatosEmpresa(empresaAnex.getRepresentante(), empresaAnex.getNIF_REP(),empresaAnex.getNombre(),empresaAnex.getnConv(),empresaAnex.getProvincia(),empresaAnex.getDireccion(),empresaAnex.getCp(),empresaAnex.getCIF(),empresaAnex.getTelefono(),empresaAnex.getFax(),empresaAnex.getCiudad());
-			
-				AnexoI anexoI = new AnexoI(coledata, empdata);
 
-				anexoI.generarAnexoI(nombreAnexo.getText(),""); 
+				
+				
+				DatosColegio coledata = new DatosColegio(centroAnex.getTitular(),centroAnex.getNIF_TIT(),centroAnex.getNombre(),centroAnex.getCod_centro(),centroAnex.getProvincia(),centroAnex.getDireccion(),centroAnex.getCp(),centroAnex.getCIF(),centroAnex.getTelefono(),centroAnex.getFax(),centroAnex.getCiudad(), centroAnex.getDAT());
+				DatosEmpresa empdata = new DatosEmpresa(empresaAnex.getRepresentante(), empresaAnex.getNIF_REP(),empresaAnex.getNombre(),empresaAnex.getnConv(),empresaAnex.getProvincia(),empresaAnex.getDireccion(),empresaAnex.getCp(),empresaAnex.getCIF(),empresaAnex.getTelefono(),empresaAnex.getFax(),empresaAnex.getCiudad());
+				DatosAlumnos alumdata = new DatosAlumnos(curso, cicloAnex.getClave(), ciclo,asigAnex.getFechaInicio(), asigAnex.getFechaFin(),"5", asigAnex.getHoraInicioM(),asigAnex.getHoraFinM(), asigAnex.getHoraInicioT() ,asigAnex.getHoraFinT(), Integer.parseInt(asigAnex.getHorasDia()), Integer.parseInt(asigAnex.getHorasTotales()), empresaAnex.getCiudad(), empresaAnex.getDireccion(), selectedAlumno.getNombre(), selectedAlumno.getApellidos(), selectedAlumno.getNIF(), tutorAnex.getNombre(), tutorAnex.getNIF_TC(), tutorEmpAnex.getNombre());
+				
+				if (anex1.isSelected()) {
+					
+					AnexoI anexoI = new AnexoI(coledata, empdata);
+					anexoI.generarAnexoI(nombreAnexo.getText() + "(Anexo 1)","");
+				}
+				
+					else if (anex2.isSelected()){
+						AnexoII anexoII = new AnexoII(coledata, empdata, alumdata);
+						anexoII.generarAnexoII(nombreAnexo.getText() + "(Anexo 2)","");
+					}
+				
+						else if (todos.isSelected()) {
+								AnexoI anexoI = new AnexoI(coledata, empdata);
+								AnexoII anexoII = new AnexoII(coledata, empdata, alumdata);
+								anexoI.generarAnexoI(nombreAnexo.getText() + "(Anexo 1)","");
+								anexoII.generarAnexoII(nombreAnexo.getText() + "(Anexo 2)","");
+						}
+						
+						else {
+							
+							Alert alert = new Alert(AlertType.ERROR);
+							alert.setTitle("Mensaje de error");
+							alert.setHeaderText("¡ Anexo no disponible !");
+							alert.setContentText("El anexo seleccionado no se encuentra aún disponible. Por favor seleccione un nuevo anexo.");
+							alert.showAndWait();
+						}
 			}	
 		
 			else {

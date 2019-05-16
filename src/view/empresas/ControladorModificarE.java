@@ -5,11 +5,15 @@ import java.sql.SQLException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import model.Alumno;
 import model.ConexionBBDD;
 import model.Empresa;
 
 public class ControladorModificarE {
+	
+	@FXML
+	ImageView logo;
 	
 	@FXML
 	Button modificar;

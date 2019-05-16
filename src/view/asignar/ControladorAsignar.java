@@ -14,12 +14,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Asignar;
 import model.ConexionBBDD;
 
 public class ControladorAsignar {
+	
+	@FXML
+	ImageView logo;
 	
 	@FXML
 	Button asignar;
@@ -127,21 +131,30 @@ public void asignar() throws SQLException {
 		
 		ConexionBBDD mostrar = new ConexionBBDD();
 		
-		ObservableList<Asignar> datosConsulta = mostrar.consultaAsig(NIF_Consulta.getText());
-		
-		Asignar selectedAsig = datosConsulta.get(0);
-	
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/asignar/ModificarAsignacion.fxml"));
-	    GridPane ventanaDos = (GridPane) loader.load();
-	    Stage ventana = new Stage();
-	    ventana.setTitle("ModificarAsignacion");
-	    Scene scene = new Scene(ventanaDos);
-	    
-	    ControladorModificacion controladoraVentana2 = loader.getController();
-	    controladoraVentana2.setDatos(selectedAsig);
-		    
-	    ventana.setScene(scene);
-	    ventana.show();
+		if(!NIF_Consulta.getText().equals("") && NIF_Consulta != null) {
+			
+			Asignar datosConsulta = mostrar.consultaAsig(NIF_Consulta.getText());
+			
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/asignar/ModificarAsignacion.fxml"));
+			GridPane ventanaDos = (GridPane) loader.load();
+			Stage ventana = new Stage();
+			ventana.setTitle("ModificarAsignacion");
+			Scene scene = new Scene(ventanaDos);
+			
+			ControladorModificacion controladoraVentana2 = loader.getController();
+			controladoraVentana2.setDatos(datosConsulta);
+	 	  
+			ventana.setScene(scene);
+			ventana.show();
+		}
+			else {
+					
+				Alert alert = new Alert(AlertType.ERROR);
+			    alert.setTitle("Mensaje de error");
+			   	alert.setHeaderText("¡ Campo de NIF vacío !");
+			   	alert.setContentText("Por favor, introduzca un NIF para consultar o modificar su asignación.");
+			   	alert.showAndWait();
+			}
   }
 	
 	

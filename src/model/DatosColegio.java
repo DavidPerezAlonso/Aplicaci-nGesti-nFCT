@@ -17,11 +17,12 @@ public class DatosColegio {
 	private String telefono;
 	private String fax;
 	private String ciudad;
+	private String DAT;
 
 
 
 	public DatosColegio(String nombre, String nIF, String nombreCentro, String codigoCentro,
-			String provincia, String direccion, String cP, String cIF, String telefono, String fax, String ciudad) {
+			String provincia, String direccion, String cP, String cIF, String telefono, String fax, String ciudad, String DAT) {
 		super();
 		this.nombre = nombre;
 		NIF = nIF;
@@ -34,6 +35,7 @@ public class DatosColegio {
 		this.telefono = telefono;
 		this.fax = fax;
 		this.ciudad = ciudad;
+		this.DAT = DAT;
 	}
 
 	public String getNombre() {
@@ -103,5 +105,12 @@ public class DatosColegio {
 		this.ciudad = ciudad;
 	}
 
+	public String getDAT() {
+		return DAT;
+	}
 
+	public void setDAT(String dAT) {
+		DAT = dAT;
+	}
+	
 }

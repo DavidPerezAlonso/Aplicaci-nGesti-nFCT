@@ -7,12 +7,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import model.Ciclo;
 import model.ConexionBBDD;
 import model.TutorCentro;
 
 public class ControladorModificarTC {
+	
+	@FXML
+	ImageView logo;
 
 	@FXML
 	Button modificar;
