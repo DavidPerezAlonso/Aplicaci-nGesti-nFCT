@@ -14,12 +14,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Alumno;
 import model.ConexionBBDD;
 
 public class ControladorAlumno {
+	
+	@FXML
+	ImageView logo;
 	
 	@FXML
 	Button nuevo;
@@ -109,7 +113,6 @@ public void crearAlumno(ActionEvent event) throws IOException{
     ventana.setScene(scene);
     ventana.show();
     
-    ventana.close();
 }
 
 public void modificarAlumno(ActionEvent event) throws IOException{

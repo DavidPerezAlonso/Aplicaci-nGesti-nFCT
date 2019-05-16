@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -35,6 +36,10 @@ public class Menu {
 	@FXML
 	Button Logout;
 	
+	@FXML
+	ImageView logo;
+	
+	
 	public void initialize() {
 		
 	}
@@ -48,6 +53,8 @@ public void intefazAlumnos(ActionEvent event) throws IOException{
         Scene scene = new Scene(ventanaDos);
         ventana.setScene(scene);
         ventana.show();
+       
+       
 	}
 
 public void intefazEmpresas(ActionEvent event) throws IOException{
@@ -89,6 +96,17 @@ public void intefazAsignar(ActionEvent event) throws IOException{
     GridPane ventanaDos = (GridPane) loader.load();
     Stage ventana = new Stage();
     ventana.setTitle("Asignar");
+    Scene scene = new Scene(ventanaDos);
+    ventana.setScene(scene);
+    ventana.show();
+}
+
+public void interfazAnexos(ActionEvent event) throws IOException{
+	
+	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/anexos/InterfazAnexos.fxml"));
+    AnchorPane ventanaDos = (AnchorPane) loader.load();
+    Stage ventana = new Stage();
+    ventana.setTitle("Anexos");
     Scene scene = new Scene(ventanaDos);
     ventana.setScene(scene);
     ventana.show();

@@ -4,12 +4,17 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.alumnos.ControladorAlumno">
    <children>
-      <AnchorPane prefHeight="386.0" prefWidth="904.0">
+      <AnchorPane prefHeight="386.0" prefWidth="904.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <TableView fx:id="alumno" layoutX="14.0" layoutY="160.0" prefHeight="176.0" prefWidth="877.0">
               <columns>
@@ -24,19 +29,51 @@
                   <TableColumn fx:id="ColMail" prefWidth="151.0" text="e-mail" />
               </columns>
             </TableView>
-            <Button fx:id="nuevo" layoutX="165.0" layoutY="59.0" mnemonicParsing="false" onAction="#crearAlumno" prefHeight="30.0" prefWidth="125.0" text="Crear nuevo registro" />
-            <Button fx:id="modificar" layoutX="594.0" layoutY="59.0" mnemonicParsing="false" onAction="#modificarAlumno" prefHeight="30.0" prefWidth="125.0" text="Modificar registro" />
+            <Button fx:id="nuevo" layoutX="165.0" layoutY="59.0" mnemonicParsing="false" onAction="#crearAlumno" prefHeight="30.0" prefWidth="125.0" text="Crear nuevo registro" textFill="#822828">
+               <effect>
+                  <DropShadow color="#ab1717">
+                     <input>
+                        <InnerShadow color="#a48341" />
+                     </input>
+                  </DropShadow>
+               </effect></Button>
+            <Button fx:id="modificar" layoutX="612.0" layoutY="59.0" mnemonicParsing="false" onAction="#modificarAlumno" prefHeight="30.0" prefWidth="125.0" text="Modificar registro" textFill="#822828">
+               <effect>
+                  <DropShadow color="#ab1717">
+                     <input>
+                        <InnerShadow color="#a48341" />
+                     </input>
+                  </DropShadow>
+               </effect></Button>
             <TextField fx:id="curso" layoutX="53.0" layoutY="123.0" />
-            <Text layoutX="19.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso" />
-            <Text layoutX="214.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciclo" />
+            <Text fill="#822828" layoutX="19.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso" />
+            <Text fill="#822828" layoutX="214.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciclo" />
             <TextField fx:id="ciclo" layoutX="243.0" layoutY="123.0" />
             <TextField fx:id="empresa" layoutX="452.0" layoutY="123.0" />
-            <Text layoutX="403.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empresa" />
+            <Text fill="#822828" layoutX="403.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empresa" />
             <TextField fx:id="tutor" layoutX="648.0" layoutY="124.0" />
-            <Text layoutX="616.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor" />
-            <Button fx:id="filtrar" layoutX="833.0" layoutY="124.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" />
-            <Button fx:id="volver" layoutX="841.0" layoutY="349.0" mnemonicParsing="false" text="Volver" />
-            <Text layoutX="407.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión Alumnos" />
+            <Text fill="#822828" layoutX="616.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tutor" />
+            <Button fx:id="filtrar" layoutX="833.0" layoutY="124.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" textFill="#822828">
+               <effect>
+                  <DropShadow color="#ab1717">
+                     <input>
+                        <InnerShadow color="#a48341" />
+                     </input>
+                  </DropShadow>
+               </effect></Button>
+            <Button fx:id="volver" layoutX="841.0" layoutY="349.0" mnemonicParsing="false" text="Volver" textFill="#822828">
+               <effect>
+                  <DropShadow color="#09513c" />
+               </effect></Button>
+            <Text fill="#822828" layoutX="389.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión Alumnos">
+               <font>
+                  <Font name="Trebuchet MS" size="18.0" />
+               </font></Text>
+            <ImageView fx:id="logo" fitHeight="54.0" fitWidth="90.0" layoutX="807.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../logo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

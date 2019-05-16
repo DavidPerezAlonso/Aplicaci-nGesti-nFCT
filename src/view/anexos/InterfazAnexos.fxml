@@ -12,8 +12,8 @@
          <children>
             <Text layoutX="158.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de anexos" />
             <Button fx:id="volver" layoutX="365.0" layoutY="273.0" mnemonicParsing="false" text="Volver" />
-            <TextField fx:id="NIF_AL" layoutX="206.0" layoutY="113.0" />
-            <Text layoutX="97.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno" />
+            <TextField fx:id="nombreAnexo" layoutX="206.0" layoutY="113.0" />
+            <Text layoutX="82.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del anexo:" />
             <TextField fx:id="nconv" layoutX="207.0" layoutY="148.0" />
             <Text layoutX="81.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número Convenio" />
             <Text layoutX="89.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce los datos para generar sus anexos:" />
@@ -22,7 +22,7 @@
             <RadioButton fx:id="anex3" layoutX="160.0" layoutY="213.0" mnemonicParsing="false" text="Anexo 3" />
             <RadioButton fx:id="anex4" layoutX="162.0" layoutY="252.0" mnemonicParsing="false" text="Anexo 4" />
             <RadioButton fx:id="todos" layoutX="263.0" layoutY="213.0" mnemonicParsing="false" text="Todos" />
-            <Button fx:id="generar" layoutX="263.0" layoutY="248.0" mnemonicParsing="false" text="Generar" />
+            <Button fx:id="generar" layoutX="263.0" layoutY="248.0" mnemonicParsing="false" onAction="#generar" text="Generar" />
          </children>
       </AnchorPane>
    </children>
