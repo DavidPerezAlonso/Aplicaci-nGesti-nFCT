@@ -27,6 +27,16 @@ public class Alumno {
 		this.email = email;
 	}
 
+	
+
+	public Alumno(String nIF, String nombre, String apellidos) {
+		super();
+		NIF = nIF;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+	}
+
+
 
 	public String getNIF() {
 		return NIF;

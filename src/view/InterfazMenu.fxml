@@ -76,7 +76,10 @@
                </font></Button>
             <Button fx:id="Logout" layoutX="570.0" layoutY="18.0" mnemonicParsing="false" text="Cerrar Sesión" textFill="#822828">
                <effect>
-                  <DropShadow color="#09513c" />
+                  <DropShadow color="#09513c">
+                     <input>
+                        <InnerShadow color="#174917" />
+                     </input></DropShadow>
                </effect>
                <font>
                   <Font name="Trebuchet MS" size="12.0" />

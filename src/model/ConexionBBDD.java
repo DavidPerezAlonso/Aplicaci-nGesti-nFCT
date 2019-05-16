@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javafx.collections.FXCollections;
@@ -413,4 +414,63 @@ public class ConexionBBDD {
 			}
 			return data; 
 		}
+	
+	public static ObservableList<String> anexoCiclo() {
+		
+		ObservableList<String> ciclos = FXCollections.observableArrayList();
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT NOMBRE FROM " + usr + ".CICLOS");
+				while(rset.next()) {
+					ciclos.add(rset.getString(1));
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return ciclos; 
+		}
+	
+	public static ObservableList<String> anexoCurso() {
+		
+		ObservableList<String> cursos = FXCollections.observableArrayList();
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT DISTINCT CURSO FROM " + usr + ".CURSAN");
+				while(rset.next()) {
+					cursos.add(rset.getString(1));
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return cursos; 
+		}
+	
+	public static ObservableList<Alumno> AnexoAlumno(String ciclo, String curso) {
+		
+		 ObservableList<Alumno> data = FXCollections.observableArrayList();
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT A.NIF_AL, A.NOMBRE, A.APELLIDOS FROM " + usr + ".ALUMNOS A, " + usr + ".CURSAN C WHERE A.NIF_AL=C.NIF_AL AND C.CURSO='"+ curso +"' AND CLAVE=(SELECT CLAVE FROM CICLOS WHERE NOMBRE='" + ciclo + "')");
+				while(rset.next()) {
+					Alumno datos = (new Alumno ( rset.getString(1), rset.getString(2), rset.getString(3)));
+					data.add(datos);
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			return data; 
+		}
+	
 }
