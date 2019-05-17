@@ -19,6 +19,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Alumno;
 import model.ConexionBBDD;
+import model.ConsultasBBDD;
 
 public class ControladorAlumno {
 	
@@ -142,6 +143,13 @@ public void modificarAlumno(ActionEvent event) throws IOException{
     	alert.showAndWait();
     }
 
+}
+
+public void filtrarPrueba(ActionEvent event) {
+	
+	ConsultasBBDD filtrado = new ConsultasBBDD();
+	
+	alumno.setItems(filtrado.filtroAlumnos(curso.getText(), ciclo.getText(), empresa.getText()));
 }
 
 }

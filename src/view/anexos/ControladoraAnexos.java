@@ -216,11 +216,23 @@ public class ControladoraAnexos {
 					
 					AnexoI anexoI = new AnexoI(coledata, empdata);
 					anexoI.generarAnexoI(nombreAnexo.getText() + "(Anexo 1)","");
+					
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Anexo generado.");
+					alert.setHeaderText(null);
+					alert.setContentText("¡ El anexo " + nombreAnexo.getText() + "(" + anex1.getText() + ") se ha generado correctamente !");
+					alert.showAndWait();
 				}
 				
 					else if (anex2.isSelected()){
 						AnexoII anexoII = new AnexoII(coledata, empdata, alumdata);
 						anexoII.generarAnexoII(nombreAnexo.getText() + "(Anexo 2)","");
+						
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("Anexo generado.");
+						alert.setHeaderText(null);
+						alert.setContentText("¡ El anexo " + nombreAnexo.getText() + "(" + anex2.getText() + ") se ha generado correctamente !");
+						alert.showAndWait();
 					}
 				
 						else if (todos.isSelected()) {
@@ -228,6 +240,12 @@ public class ControladoraAnexos {
 								AnexoII anexoII = new AnexoII(coledata, empdata, alumdata);
 								anexoI.generarAnexoI(nombreAnexo.getText() + "(Anexo 1)","");
 								anexoII.generarAnexoII(nombreAnexo.getText() + "(Anexo 2)","");
+								
+								Alert alert = new Alert(AlertType.INFORMATION);
+								alert.setTitle("Anexos generados.");
+								alert.setHeaderText(null);
+								alert.setContentText("¡ Todos los anexos se han generado correctamente !");
+								alert.showAndWait();
 						}
 						
 						else {
