@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="458.0" prefWidth="616.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.tutores.ControladorTC">
    <children>
-      <TableView fx:id="tutoresc" layoutX="89.0" layoutY="203.0" prefHeight="200.0" prefWidth="442.0">
+      <TableView fx:id="tutoresc" layoutX="89.0" layoutY="203.0" prefHeight="142.0" prefWidth="442.0">
         <columns>
           <TableColumn fx:id="ColNIF" prefWidth="75.0" text="NIF" />
           <TableColumn fx:id="ColNombre" prefWidth="75.0" text="Nombre" />
@@ -45,16 +45,16 @@
                </input>
             </DropShadow>
          </effect></Button>
-      <Text fill="#822828" layoutX="36.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno">
+      <Text fill="#822828" layoutX="40.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
          </font></Text>
-      <TextField fx:id="NIF_AL" layoutX="106.0" layoutY="155.0" />
-      <Text fill="#822828" layoutX="281.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº Convenio">
+      <TextField fx:id="NIF_AL" layoutX="110.0" layoutY="155.0" />
+      <Text fill="#822828" layoutX="296.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empresa">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
          </font></Text>
-      <TextField fx:id="nconv" layoutX="353.0" layoutY="155.0" />
+      <TextField fx:id="empresa" layoutX="353.0" layoutY="155.0" />
       <Button fx:id="filtrar" layoutX="534.0" layoutY="155.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" textFill="#822828">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
@@ -86,5 +86,23 @@
             <Image url="@../logo.png" />
          </image>
       </ImageView>
+      <TextField fx:id="nifTutor" layoutX="229.0" layoutY="375.0" />
+      <Text fill="#822828" layoutX="162.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Tutor">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Button fx:id="buscar" layoutX="402.0" layoutY="377.0" mnemonicParsing="false" onAction="#buscar" text="Buscar" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

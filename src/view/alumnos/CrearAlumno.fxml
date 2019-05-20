@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -13,10 +14,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.alumnos.ControladorCrearA">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="700.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.alumnos.ControladorCrearA">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="101.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="465.0" minWidth="10.0" prefWidth="449.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="27.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
@@ -50,7 +53,15 @@
             <Font name="Trebuchet MS" size="12.0" />
          </font>
       </Text>
-      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos:" GridPane.rowIndex="4">
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos:" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección:" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="40.0" />
          </GridPane.margin>
@@ -58,7 +69,7 @@
             <Font name="Trebuchet MS" size="12.0" />
          </font>
       </Text>
-      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección:" GridPane.rowIndex="5">
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad:" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="40.0" />
          </GridPane.margin>
@@ -66,7 +77,23 @@
             <Font name="Trebuchet MS" size="12.0" />
          </font>
       </Text>
-      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad:" GridPane.rowIndex="6">
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Código Postal:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Provincia:" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono:" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="40.0" />
          </GridPane.margin>
@@ -74,33 +101,9 @@
             <Font name="Trebuchet MS" size="12.0" />
          </font>
       </Text>
-      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Código Postal:" GridPane.rowIndex="7">
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="e-mail:" GridPane.columnIndex="2" GridPane.rowIndex="6">
          <GridPane.margin>
-            <Insets left="40.0" />
-         </GridPane.margin>
-         <font>
-            <Font name="Trebuchet MS" size="12.0" />
-         </font>
-      </Text>
-      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Provincia:" GridPane.rowIndex="8">
-         <GridPane.margin>
-            <Insets left="40.0" />
-         </GridPane.margin>
-         <font>
-            <Font name="Trebuchet MS" size="12.0" />
-         </font>
-      </Text>
-      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono:" GridPane.rowIndex="9">
-         <GridPane.margin>
-            <Insets left="40.0" />
-         </GridPane.margin>
-         <font>
-            <Font name="Trebuchet MS" size="12.0" />
-         </font>
-      </Text>
-      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="e-mail:" GridPane.rowIndex="10">
-         <GridPane.margin>
-            <Insets left="40.0" />
+            <Insets left="20.0" />
          </GridPane.margin>
          <font>
             <Font name="Trebuchet MS" size="12.0" />
@@ -108,52 +111,52 @@
       </Text>
       <TextField fx:id="NIF" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets right="50.0" />
+            <Insets right="30.0" />
          </GridPane.margin>
       </TextField>
       <TextField fx:id="nombre" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
-            <Insets right="50.0" />
+            <Insets right="30.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="apellidos" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <TextField fx:id="apellidos" GridPane.columnIndex="3" GridPane.rowIndex="3">
          <GridPane.margin>
-            <Insets right="50.0" />
+            <Insets right="30.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="direccion" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <TextField fx:id="direccion" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
-            <Insets right="50.0" />
+            <Insets right="30.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="ciudad" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <TextField fx:id="ciudad" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <GridPane.margin>
-            <Insets right="50.0" />
+            <Insets right="30.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="cp" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <TextField fx:id="cp" GridPane.columnIndex="3" GridPane.rowIndex="4">
          <GridPane.margin>
-            <Insets right="50.0" />
+            <Insets right="30.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="provincia" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <TextField fx:id="provincia" GridPane.columnIndex="3" GridPane.rowIndex="5">
          <GridPane.margin>
-            <Insets right="50.0" />
+            <Insets right="30.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="telefono" GridPane.columnIndex="1" GridPane.rowIndex="9">
+      <TextField fx:id="telefono" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <GridPane.margin>
-            <Insets right="50.0" />
+            <Insets right="30.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="10">
+      <TextField fx:id="email" GridPane.columnIndex="3" GridPane.rowIndex="6">
          <GridPane.margin>
-            <Insets right="50.0" />
+            <Insets right="30.0" />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="volver" mnemonicParsing="false" text="Volver" textFill="#822828" GridPane.columnIndex="1" GridPane.rowIndex="11">
+      <Button fx:id="volver" mnemonicParsing="false" text="Volver" textFill="#822828" GridPane.columnIndex="3" GridPane.rowIndex="11">
          <GridPane.margin>
-            <Insets left="300.0" top="15.0" />
+            <Insets left="140.0" top="30.0" />
          </GridPane.margin>
          <font>
             <Font name="Trebuchet MS" size="12.0" />
@@ -166,9 +169,9 @@
             </DropShadow>
          </effect>
       </Button>
-      <Button fx:id="limpiar" mnemonicParsing="false" onAction="#limpiarTexto" text="Limpiar" textFill="#822828" GridPane.columnIndex="1" GridPane.rowIndex="11">
+      <Button fx:id="limpiar" mnemonicParsing="false" onAction="#limpiarTexto" text="Limpiar" textFill="#822828" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="11">
          <GridPane.margin>
-            <Insets left="150.0" top="15.0" />
+            <Insets bottom="30.0" left="200.0" top="15.0" />
          </GridPane.margin>
          <font>
             <Font name="Trebuchet MS" size="12.0" />
@@ -183,7 +186,7 @@
       </Button>
       <Button fx:id="crear" mnemonicParsing="false" onAction="#crearAlumno" text="Crear" textFill="#822828" GridPane.columnIndex="1" GridPane.rowIndex="11">
          <GridPane.margin>
-            <Insets top="15.0" />
+            <Insets bottom="30.0" top="15.0" />
          </GridPane.margin>
          <font>
             <Font name="Trebuchet MS" size="12.0" />
@@ -212,5 +215,69 @@
             <Insets bottom="15.0" left="355.0" />
          </GridPane.margin>
       </ImageView>
+      <ChoiceBox fx:id="ciclo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciclo:" GridPane.rowIndex="8">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso:" GridPane.rowIndex="9">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </Text>
+      <ChoiceBox fx:id="curso" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar nuevo curso: " GridPane.columnIndex="2" GridPane.rowIndex="8">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Button fx:id="agregarCurso" mnemonicParsing="false" onAction="#agregarCurso" text="+" textFill="#822828" GridPane.columnIndex="3" GridPane.rowIndex="9">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect>
+         <GridPane.margin>
+            <Insets left="140.0" />
+         </GridPane.margin>
+      </Button>
+      <TextField fx:id="inicio" GridPane.columnIndex="2" GridPane.rowIndex="9">
+         <GridPane.margin>
+            <Insets left="70.0" />
+         </GridPane.margin>
+      </TextField>
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Año Inicio:" GridPane.columnIndex="2" GridPane.rowIndex="9">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fill="#822828" strokeType="OUTSIDE" strokeWidth="0.0" text="Año Fin:" GridPane.columnIndex="3" GridPane.rowIndex="9">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="20.0" />
+         </GridPane.margin>
+      </Text>
+      <TextField fx:id="fin" GridPane.columnIndex="3" GridPane.rowIndex="9">
+         <GridPane.margin>
+            <Insets left="67.0" right="103.0" />
+         </GridPane.margin>
+      </TextField>
    </children>
 </GridPane>

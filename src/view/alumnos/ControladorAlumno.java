@@ -80,6 +80,12 @@ public class ControladorAlumno {
 	@FXML
 	private TableColumn<Alumno, String> ColMail;
 	
+	@FXML 
+	TextField nifAlumno;
+	
+	@FXML
+	Button buscar;
+	
 	
 public void initialize() {
 		
@@ -98,11 +104,19 @@ public void initialize() {
 
 public void filtrar(ActionEvent event) {
 	
-	ConexionBBDD mostrar = new ConexionBBDD();
+	ConsultasBBDD filtrado = new ConsultasBBDD();
 	
-	alumno.setItems(mostrar.ConsultaA());
+	alumno.setItems(filtrado.filtroAlumnos(curso.getText(), ciclo.getText(), empresa.getText(), tutor.getText()));
 	
 }	
+
+public void buscar(ActionEvent event) {
+	
+	ConsultasBBDD buscar = new ConsultasBBDD();
+
+	alumno.setItems(buscar.buscarAlumno(nifAlumno.getText()));
+
+}
 
 public void crearAlumno(ActionEvent event) throws IOException{
 	
@@ -143,13 +157,6 @@ public void modificarAlumno(ActionEvent event) throws IOException{
     	alert.showAndWait();
     }
 
-}
-
-public void filtrarPrueba(ActionEvent event) {
-	
-	ConsultasBBDD filtrado = new ConsultasBBDD();
-	
-	alumno.setItems(filtrado.filtroAlumnos(curso.getText(), ciclo.getText(), empresa.getText()));
 }
 
 }

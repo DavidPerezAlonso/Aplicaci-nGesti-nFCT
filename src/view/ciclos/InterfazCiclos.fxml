@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="428.0" prefWidth="912.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ciclos.ControladorCiclos">
+<AnchorPane prefHeight="458.0" prefWidth="912.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ciclos.ControladorCiclos">
    <children>
       <TableView fx:id="ciclos" layoutX="23.0" layoutY="173.0" prefHeight="200.0" prefWidth="873.0">
         <columns>
@@ -25,7 +25,7 @@
             <TableColumn fx:id="ColCrit" prefWidth="180.0" text="Criterios de Evaluación" />
         </columns>
       </TableView>
-      <Button fx:id="volver" layoutX="844.0" layoutY="386.0" mnemonicParsing="false" text="Volver" textFill="#822828">
+      <Button fx:id="volver" layoutX="843.0" layoutY="419.0" mnemonicParsing="false" text="Volver" textFill="#822828">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
          </font>
@@ -41,11 +41,11 @@
             <Font name="Trebuchet MS" size="12.0" />
          </font></Text>
       <TextField fx:id="familiaprof" layoutX="113.0" layoutY="137.0" />
-      <Text fill="#822828" layoutX="286.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clave">
+      <Text fill="#822828" layoutX="288.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
          </font></Text>
-      <TextField fx:id="clave" layoutX="327.0" layoutY="137.0" />
+      <TextField fx:id="nombre" layoutX="338.0" layoutY="137.0" />
       <Button fx:id="filtrar" layoutX="773.0" layoutY="137.0" mnemonicParsing="false" onAction="#filtrar" text="Filtrar" textFill="#822828">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
@@ -57,11 +57,11 @@
                </input>
             </DropShadow>
          </effect></Button>
-      <Text fill="#822828" layoutX="499.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno">
+      <Text fill="#822828" layoutX="517.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empresa">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
          </font></Text>
-      <TextField fx:id="nif_al" layoutX="572.0" layoutY="137.0" />
+      <TextField fx:id="empresa" layoutX="572.0" layoutY="137.0" />
       <Button fx:id="nuevo" layoutX="163.0" layoutY="76.0" mnemonicParsing="false" onAction="#crearCiclo" prefHeight="30.0" prefWidth="131.0" text="Crear nuevo registro" textFill="#822828">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
@@ -93,5 +93,23 @@
             <Image url="@../logo.png" />
          </image>
       </ImageView>
+      <TextField fx:id="clave" layoutX="395.0" layoutY="397.0" />
+      <Button fx:id="buscar" layoutX="566.0" layoutY="398.0" mnemonicParsing="false" onAction="#buscar" text="Buscar" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Text fill="#822828" layoutX="353.0" layoutY="413.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clave">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

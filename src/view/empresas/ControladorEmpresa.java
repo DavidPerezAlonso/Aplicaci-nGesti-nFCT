@@ -19,7 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Alumno;
-import model.ConexionBBDD;
+import model.ConsultasBBDD;
 import model.Empresa;
 import view.alumnos.ControladorModificarA;
 
@@ -47,16 +47,13 @@ public class ControladorEmpresa {
 	Button modificarTE;
 	
 	@FXML
-	TextField tutorEmpresa;
-	
-	@FXML
 	TextField tutor;
 	
 	@FXML
 	TextField conv;
 	
 	@FXML
-	TextField ciudad;
+	TextField ciclo;
 	
 	@FXML 
 	TableView<Empresa> empresas;
@@ -100,6 +97,12 @@ public class ControladorEmpresa {
 	@FXML
 	private TableColumn<Empresa, String> ColFecha_Conv;
 	
+	@FXML
+	TextField convenio;
+	
+	@FXML 
+	Button buscar;
+	
 	
 	public void initialize() {
 			
@@ -122,11 +125,19 @@ public class ControladorEmpresa {
 	
 	public void filtrar(ActionEvent event) {
 		
-		ConexionBBDD mostrar = new ConexionBBDD();
-		
-		empresas.setItems(mostrar.ConsultaE());
+		ConsultasBBDD mostrar = new ConsultasBBDD();
+
+		empresas.setItems(mostrar.filtroEmpresa(tutor.getText(), conv.getText(), ciclo.getText()));
 		
 	}	
+	
+	public void buscar(ActionEvent event) {
+		
+		ConsultasBBDD buscar = new ConsultasBBDD();
+
+		empresas.setItems(buscar.buscarEmpresa(convenio.getText()));
+	
+	}
 	
 	public void crearEmpresa(ActionEvent event) throws IOException{
 		

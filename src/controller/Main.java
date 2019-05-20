@@ -19,7 +19,7 @@ public class Main extends Application {
 			this.primaryStage.setTitle("GestionFCTs");
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../view/InterfazMenu.fxml"));
+            loader.setLocation(Main.class.getResource("../view/Login.fxml"));
             rootLayout = (AnchorPane) loader.load();
 
             Scene scene = new Scene(rootLayout);

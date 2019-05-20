@@ -187,13 +187,34 @@ public class ConexionBBDD {
 			return data; 
 		}
 	
-	public static void insertarAlumno(String NIF, String nombre, String apellidos, String direccion, String ciudad, String cp, String provincia, String telefono, String email) throws SQLException{
+	public static String claveCiclo(String nombre) {
+		
+			String clave = "";
+			
+			try {
+				Statement stmt = conexion.createStatement();
+				ResultSet rset = stmt.executeQuery("SELECT CLAVE FROM " + usr + ".CICLOS WHERE NOMBRE='" + nombre + "'");
+				while(rset.next()) {
+					clave = (rset.getString(1));
+				}
+				rset.close();
+				stmt.close();
+				
+			}catch (SQLException s){
+				s.printStackTrace();
+			}
+			
+			return clave; 
+		}
+	
+	public static void insertarAlumno(String NIF, String nombre, String apellidos, String direccion, String ciudad, String cp, String provincia, String telefono, String email, String clave, String curso) throws SQLException{
 		
 		Statement stmt = conexion.createStatement();
 
 			try {
 				
 				stmt.executeUpdate("INSERT INTO " + usr + ".ALUMNOS VALUES ('"+ NIF + "','" + nombre + "','" + apellidos + "','" + direccion + "','" + ciudad + "','" + cp + "','" + provincia + "','" + telefono + "','" + email + "')");
+				stmt.executeUpdate("INSERT INTO " + usr + ".CURSAN VALUES ('"+ curso + "','" + clave + "','" + NIF + "')");
 				
 				}catch(SQLException s) {
 					s.printStackTrace();
@@ -531,5 +552,7 @@ public class ConexionBBDD {
 			}
 			return data; 
 		}
+	
+	
 	
 }

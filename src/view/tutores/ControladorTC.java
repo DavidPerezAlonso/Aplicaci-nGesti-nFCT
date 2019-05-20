@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.ConexionBBDD;
+import model.ConsultasBBDD;
 import model.TutorCentro;
 import view.ciclos.ControladorModificarC;
 
@@ -42,7 +43,7 @@ public class ControladorTC {
 	TextField NIF_AL;
 	
 	@FXML
-	TextField nconv;
+	TextField empresa;
 	
 	
 	@FXML 
@@ -63,6 +64,11 @@ public class ControladorTC {
 	@FXML
 	private TableColumn<TutorCentro, String> ColCentro;
 	
+	@FXML
+	TextField nifTutor;
+	
+	@FXML
+	Button buscar;
 	
 	public void initialize() {
 		
@@ -77,11 +83,19 @@ public class ControladorTC {
 
 	public void filtrar(ActionEvent event) {
 	
-		ConexionBBDD mostrar = new ConexionBBDD();
-	
-		tutoresc.setItems(mostrar.ConsultaTC());
+		ConsultasBBDD mostrar = new ConsultasBBDD();
+
+		tutoresc.setItems(mostrar.filtroTutor(NIF_AL.getText(), empresa.getText()));
 	
 	}	
+	
+	public void buscar(ActionEvent event) {
+		
+		ConsultasBBDD buscar = new ConsultasBBDD();
+
+		tutoresc.setItems(buscar.buscarTutor(nifTutor.getText()));
+	
+	}
 
 	public void crearTutorC(ActionEvent event) throws IOException {
 	
@@ -122,4 +136,6 @@ public class ControladorTC {
 		}
 
 	}
+	
+
 }

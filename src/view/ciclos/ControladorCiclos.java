@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import model.Alumno;
 import model.Ciclo;
 import model.ConexionBBDD;
+import model.ConsultasBBDD;
 import view.alumnos.ControladorModificarA;
 
 public class ControladorCiclos {
@@ -43,10 +44,10 @@ public class ControladorCiclos {
 	TextField familiaprof;
 	
 	@FXML
-	TextField clave;
+	TextField nombre;
 	
 	@FXML
-	TextField nif_al;
+	TextField empresa;
 	
 	@FXML 
 	TableView<Ciclo> ciclos;
@@ -72,6 +73,12 @@ public class ControladorCiclos {
 	@FXML
 	private TableColumn<Ciclo, String> ColCrit;
 	
+	@FXML
+	TextField clave;
+	
+	@FXML
+	Button buscar;
+	
 
 	public void initialize() {
 		
@@ -86,53 +93,60 @@ public class ControladorCiclos {
 		
 	}
 	
+	public void buscar(ActionEvent event) {
+		
+		ConsultasBBDD buscar = new ConsultasBBDD();
 
-public void filtrar(ActionEvent event) {
+		ciclos.setItems(buscar.buscarCiclo(clave.getText()));
 	
-	ConexionBBDD mostrar = new ConexionBBDD();
+	}
 	
-	ciclos.setItems(mostrar.ConsultaC());
+	public void filtrar(ActionEvent event) {
+		
+		ConsultasBBDD mostrar = new ConsultasBBDD();
+		
+		ciclos.setItems(mostrar.filtroCiclo(familiaprof.getText(), nombre.getText(), empresa.getText()));
+		
+	}	
 	
-}	
-
-public void crearCiclo(ActionEvent event) throws IOException{
-	
-	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/ciclos/CrearCiclo.fxml"));
-    GridPane ventanaDos = (GridPane) loader.load();
-    Stage ventana = new Stage();
-    ventana.setTitle("CrearCiclo");
-    Scene scene = new Scene(ventanaDos);
-    ventana.setScene(scene);
-    ventana.show();
-}
-
-public void modificarCiclo(ActionEvent event) throws IOException{
-	
-	Ciclo selectedCiclo = ciclos.getSelectionModel().getSelectedItem();
-	
-	if (selectedCiclo != null) {
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/ciclos/ModificarCiclo.fxml"));
+	public void crearCiclo(ActionEvent event) throws IOException{
+		
+		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/ciclos/CrearCiclo.fxml"));
 	    GridPane ventanaDos = (GridPane) loader.load();
 	    Stage ventana = new Stage();
-	    ventana.setTitle("ModificarCiclo");
+	    ventana.setTitle("CrearCiclo");
 	    Scene scene = new Scene(ventanaDos);
-	    
-	    ControladorModificarC controladoraVentana2 = loader.getController();
-	    controladoraVentana2.setDatos(selectedCiclo);
-	    
 	    ventana.setScene(scene);
 	    ventana.show();
-    }
+	}
 	
-    else
-    {
-    	Alert alert = new Alert(AlertType.ERROR);
-    	alert.setTitle("Mensaje de error");
-    	alert.setHeaderText("¡ Ciclo no seleccionado !");
-    	alert.setContentText("Por favor, seleccione un ciclo a modificar de la tabla.");
-    	alert.showAndWait();
-    }
-
-}
+	public void modificarCiclo(ActionEvent event) throws IOException{
+		
+		Ciclo selectedCiclo = ciclos.getSelectionModel().getSelectedItem();
+		
+		if (selectedCiclo != null) {
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/ciclos/ModificarCiclo.fxml"));
+		    GridPane ventanaDos = (GridPane) loader.load();
+		    Stage ventana = new Stage();
+		    ventana.setTitle("ModificarCiclo");
+		    Scene scene = new Scene(ventanaDos);
+		    
+		    ControladorModificarC controladoraVentana2 = loader.getController();
+		    controladoraVentana2.setDatos(selectedCiclo);
+		    
+		    ventana.setScene(scene);
+		    ventana.show();
+	    }
+		
+	    else
+	    {
+	    	Alert alert = new Alert(AlertType.ERROR);
+	    	alert.setTitle("Mensaje de error");
+	    	alert.setHeaderText("¡ Ciclo no seleccionado !");
+	    	alert.setContentText("Por favor, seleccione un ciclo a modificar de la tabla.");
+	    	alert.showAndWait();
+	    }
+	
+	}
 	
 }
