@@ -15,11 +15,12 @@ import javafx.collections.ObservableList;
 
 public class LoginBBDD {
 		
-		private String url= "";
-		private static String usr = "";
-		private String pwd = "";
-		private static Connection conexion;
-
+	private String url= "";
+	private static String user = "";
+	private String pwd = "";
+	private static String usr = "";
+	private static Connection conexion;
+	
 		public LoginBBDD()  {
 			
 			Properties propiedades = new Properties();
@@ -30,8 +31,9 @@ public class LoginBBDD {
 					entrada = new FileInputStream(miFichero);
 					propiedades.load(entrada);
 					url=propiedades.getProperty("url");
-					usr=propiedades.getProperty("usr");
+					user=propiedades.getProperty("user");
 					pwd=propiedades.getProperty("pwd");
+					usr=propiedades.getProperty("usr");
 				}
 				else
 					System.out.println("Fichero no encontrado");
@@ -49,7 +51,7 @@ public class LoginBBDD {
 			
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				conexion = DriverManager.getConnection(url, usr, pwd);
+				conexion = DriverManager.getConnection(url, user, pwd);
 				
 				if(!conexion.isClosed()) {
 					System.out.println("Conexión establecida");
