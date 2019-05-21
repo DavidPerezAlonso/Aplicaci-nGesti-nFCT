@@ -2,12 +2,15 @@ package view.alumnos;
 
 import java.sql.SQLException;
 
+import controller.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.Alumno;
 import model.ConexionBBDD;
 
@@ -53,6 +56,15 @@ public class ControladorModificarA {
 	TextField email;
 	
 	Alumno datosmodificar;
+	
+	Main controlador;
+	
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
     
 
 	public void modificarAlumno() throws SQLException {
@@ -71,6 +83,12 @@ public class ControladorModificarA {
 	        String mailtexto = email.getText();
 	        
 	        modificar.modificarAlumno(niftexto, nomtexto, apetexto, dirtexto, ciutexto, cptexto, provtexto, teltexto, mailtexto);
+	        
+	        Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Modificación realizada.");
+			alert.setHeaderText(null);
+			alert.setContentText("¡ El alumno " + nomtexto + " " + apetexto + " se ha modificado correctamente !");
+			alert.showAndWait();
 		}
 		else {
 			
@@ -110,5 +128,9 @@ public class ControladorModificarA {
 		telefono.setText(datosmodificar.getTelefono());
 		email.setText(datosmodificar.getEmail());
 		
+	}
+	
+	public void volver(ActionEvent event) {
+		controlador.alumnoVent();
 	}
 }

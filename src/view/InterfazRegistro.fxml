@@ -42,7 +42,7 @@
       <TextField fx:id="user" layoutX="136.0" layoutY="74.0" />
       <TextField fx:id="pass" layoutX="136.0" layoutY="112.0" />
       <TextField fx:id="claveRegistro" layoutX="136.0" layoutY="149.0" />
-      <Button layoutX="327.0" layoutY="191.0" mnemonicParsing="false" text="Volver" textFill="#822828">
+      <Button fx:id="volver" layoutX="327.0" layoutY="191.0" mnemonicParsing="false" onAction="#volver" text="Volver" textFill="#822828">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
          </font>
@@ -54,7 +54,7 @@
             </DropShadow>
          </effect>
       </Button>
-      <ImageView fx:id="logo" fitHeight="73.0" fitWidth="92.0" layoutX="297.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logo" fitHeight="45.0" fitWidth="81.0" layoutX="305.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@logo.png" />
          </image>

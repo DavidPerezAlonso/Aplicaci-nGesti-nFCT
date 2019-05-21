@@ -79,6 +79,15 @@ public class ControladorCiclos {
 	@FXML
 	Button buscar;
 	
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
+	
 
 	public void initialize() {
 		
@@ -111,13 +120,7 @@ public class ControladorCiclos {
 	
 	public void crearCiclo(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/ciclos/CrearCiclo.fxml"));
-	    GridPane ventanaDos = (GridPane) loader.load();
-	    Stage ventana = new Stage();
-	    ventana.setTitle("CrearCiclo");
-	    Scene scene = new Scene(ventanaDos);
-	    ventana.setScene(scene);
-	    ventana.show();
+		controlador.ciclosCrearVent();
 	}
 	
 	public void modificarCiclo(ActionEvent event) throws IOException{
@@ -125,19 +128,9 @@ public class ControladorCiclos {
 		Ciclo selectedCiclo = ciclos.getSelectionModel().getSelectedItem();
 		
 		if (selectedCiclo != null) {
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/ciclos/ModificarCiclo.fxml"));
-		    GridPane ventanaDos = (GridPane) loader.load();
-		    Stage ventana = new Stage();
-		    ventana.setTitle("ModificarCiclo");
-		    Scene scene = new Scene(ventanaDos);
-		    
-		    ControladorModificarC controladoraVentana2 = loader.getController();
-		    controladoraVentana2.setDatos(selectedCiclo);
-		    
-		    ventana.setScene(scene);
-		    ventana.show();
-	    }
-		
+			
+			controlador.ciclosModVent(selectedCiclo);
+		}
 	    else
 	    {
 	    	Alert alert = new Alert(AlertType.ERROR);
@@ -147,6 +140,10 @@ public class ControladorCiclos {
 	    	alert.showAndWait();
 	    }
 	
+	}
+	
+	public void volver(ActionEvent event) {
+		controlador.menuVent();
 	}
 	
 }

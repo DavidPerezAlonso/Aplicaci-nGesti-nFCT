@@ -77,6 +77,15 @@ public class ControladorCrearA {
 	@FXML
 	TextField fin;
 	
+	Main controlador;
+	
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
 	public void initialize() {
 		
 		ConexionBBDD listar = new ConexionBBDD();
@@ -109,6 +118,12 @@ public class ControladorCrearA {
 	        	String clavetexto = insertar.claveCiclo(ciclotexto);
 	        
 	        	insertar.insertarAlumno(niftexto, nomtexto, apetexto, dirtexto, ciutexto, cptexto, provtexto, teltexto, mailtexto, clavetexto, cursotexto);
+	        	
+	        	Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Alumno registrado.");
+				alert.setHeaderText(null);
+				alert.setContentText("¡ El nuevo alumno se ha registrado correctamente !");
+				alert.showAndWait();
 	        }
 	        
 	        else {
@@ -159,4 +174,7 @@ public class ControladorCrearA {
 		
 	}
 	
+	public void volver(ActionEvent event) {
+		controlador.alumnoVent();
+	}
 }

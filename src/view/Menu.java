@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -39,77 +41,59 @@ public class Menu {
 	@FXML
 	ImageView logo;
 	
+	Main controlador;
 	
-	public void initialize() {
-		
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
 	}
 	
-public void intefazAlumnos(ActionEvent event) throws IOException{
+	
+	public void initialize() {
+
+	}
+	
+	public void intefazAlumnos(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/alumnos/InterfazAlumnos.fxml"));
-        AnchorPane ventanaDos = (AnchorPane) loader.load();
-        Stage ventana = new Stage();
-        ventana.setTitle("Alumnos");
-        Scene scene = new Scene(ventanaDos);
-        ventana.setScene(scene);
-        ventana.show();
-       
+		controlador.alumnoVent();
        
 	}
 
-public void intefazEmpresas(ActionEvent event) throws IOException{
+	public void intefazEmpresas(ActionEvent event) throws IOException{
 	
-	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/InterfazEmpresas.fxml"));
-    AnchorPane ventanaDos = (AnchorPane) loader.load();
-    Stage ventana = new Stage();
-    ventana.setTitle("Empresas");
-    Scene scene = new Scene(ventanaDos);
-    ventana.setScene(scene);
-    ventana.show();
+	controlador.empresaVent();
 }
 
 public void intefazCiclos(ActionEvent event) throws IOException{
 	
-	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/ciclos/InterfazCiclos.fxml"));
-    AnchorPane ventanaDos = (AnchorPane) loader.load();
-    Stage ventana = new Stage();
-    ventana.setTitle("Ciclos");
-    Scene scene = new Scene(ventanaDos);
-    ventana.setScene(scene);
-    ventana.show();
+	controlador.ciclosVent();
 }
 
 public void intefazTutores(ActionEvent event) throws IOException{
 	
-	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/tutores/InterfazTutores.fxml"));
-    AnchorPane ventanaDos = (AnchorPane) loader.load();
-    Stage ventana = new Stage();
-    ventana.setTitle("Tutores");
-    Scene scene = new Scene(ventanaDos);
-    ventana.setScene(scene);
-    ventana.show();
+	controlador.tutoresVent();
 }
 
 public void intefazAsignar(ActionEvent event) throws IOException{
 	
-	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/asignar/InterfazAsignar.fxml"));
-    GridPane ventanaDos = (GridPane) loader.load();
-    Stage ventana = new Stage();
-    ventana.setTitle("Asignar");
-    Scene scene = new Scene(ventanaDos);
-    ventana.setScene(scene);
-    ventana.show();
+	controlador.asignarVent();
 }
 
 public void interfazAnexos(ActionEvent event) throws IOException{
 	
-	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/anexos/InterfazAnexos.fxml"));
-    AnchorPane ventanaDos = (AnchorPane) loader.load();
-    Stage ventana = new Stage();
-    ventana.setTitle("Anexos");
-    Scene scene = new Scene(ventanaDos);
-    ventana.setScene(scene);
-    ventana.show();
+	controlador.anexosVent();
+}
+
+public void logout(ActionEvent event) {
+	controlador.cerrarAplicacion();
+	
+	Alert alert = new Alert(AlertType.INFORMATION);
+	alert.setTitle("Logout correcto.");
+	alert.setHeaderText(null);
+	alert.setContentText("¡ Hasta pronto !");
+	alert.showAndWait();
 }
 	
 }

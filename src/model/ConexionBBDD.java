@@ -214,7 +214,7 @@ public class ConexionBBDD {
 			try {
 				
 				stmt.executeUpdate("INSERT INTO " + usr + ".ALUMNOS VALUES ('"+ NIF + "','" + nombre + "','" + apellidos + "','" + direccion + "','" + ciudad + "','" + cp + "','" + provincia + "','" + telefono + "','" + email + "')");
-				stmt.executeUpdate("INSERT INTO " + usr + ".CURSAN VALUES ('"+ curso + "','" + clave + "','" + NIF + "')");
+				stmt.executeUpdate("INSERT INTO " + usr + ".CURSAN VALUES ('"+ curso + "','" + NIF + "','" + clave + "')");
 				
 				}catch(SQLException s) {
 					s.printStackTrace();
@@ -223,6 +223,23 @@ public class ConexionBBDD {
 				stmt.close();
 				
 	}
+	
+	public static void insertarCurso(String curso, String NIF_AL, String clave) throws SQLException{
+		
+		Statement stmt = conexion.createStatement();
+
+			try {
+				
+				stmt.executeUpdate("INSERT INTO " + usr + ".CURSAN VALUES ('"+ curso + "','" + NIF_AL + "','" + clave + "')");
+				
+				}catch(SQLException s) {
+					s.printStackTrace();
+				}
+
+				stmt.close();
+				
+	}
+	
 	
 	public static void modificarAlumno(String NIF, String nombre, String apellidos, String direccion, String ciudad, String cp, String provincia, String telefono, String email) throws SQLException{
 		

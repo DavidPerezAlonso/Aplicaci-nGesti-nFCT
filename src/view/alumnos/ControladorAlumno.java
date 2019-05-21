@@ -86,8 +86,17 @@ public class ControladorAlumno {
 	@FXML
 	Button buscar;
 	
+	Main controlador;
 	
-public void initialize() {
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
+	
+	public void initialize() {
 		
 		ColNIF.setCellValueFactory(new PropertyValueFactory<Alumno, String>("NIF"));
 		ColNombre.setCellValueFactory(new PropertyValueFactory<Alumno, String>("nombre"));
@@ -120,13 +129,7 @@ public void buscar(ActionEvent event) {
 
 public void crearAlumno(ActionEvent event) throws IOException{
 	
-	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/alumnos/CrearAlumno.fxml"));
-    GridPane ventanaDos = (GridPane) loader.load();
-    Stage ventana = new Stage();
-    ventana.setTitle("CrearAlumno");
-    Scene scene = new Scene(ventanaDos);
-    ventana.setScene(scene);
-    ventana.show();
+	controlador.alumnoCrearVent();
     
 }
 
@@ -135,17 +138,8 @@ public void modificarAlumno(ActionEvent event) throws IOException{
 	Alumno selectedAlumno = alumno.getSelectionModel().getSelectedItem();
 	
 	if (selectedAlumno != null) {
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/alumnos/ModificarAlumno.fxml"));
-	    GridPane ventanaDos = (GridPane) loader.load();
-	    Stage ventana = new Stage();
-	    ventana.setTitle("ModificarAlumno");
-	    Scene scene = new Scene(ventanaDos);
-	    
-	    ControladorModificarA controladoraVentana2 = loader.getController();
-	    controladoraVentana2.setDatos(selectedAlumno);
-	    
-	    ventana.setScene(scene);
-	    ventana.show();
+		
+		controlador.alumnoModVent(selectedAlumno);
     }
 	
     else
@@ -157,6 +151,10 @@ public void modificarAlumno(ActionEvent event) throws IOException{
     	alert.showAndWait();
     }
 
+}
+
+public void volver(ActionEvent event) {
+	controlador.menuVent();
 }
 
 }

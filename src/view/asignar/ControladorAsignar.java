@@ -76,6 +76,15 @@ public class ControladorAsignar {
 	@FXML
 	TextField NIF_Consulta;
 	
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
+	
 public void asignar() throws SQLException {
         
 		ConexionBBDD insertar = new ConexionBBDD();
@@ -95,6 +104,12 @@ public void asignar() throws SQLException {
 			String hfttexto = horaFinT.getText();
 
 			insertar.asignarPracticas(fitexto, fftexto, hdiatexto, totaltexto, himtexto, hfmtexto, hittexto, hfttexto, nifatexto, niftctexto, niftetexto, convtexto);
+			
+        	Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Practicas asignadas.");
+			alert.setHeaderText(null);
+			alert.setContentText("¡ La asignación de prácticas se ha registrado correctamente !");
+			alert.showAndWait();
 		}
 		
 		else {
@@ -135,17 +150,7 @@ public void asignar() throws SQLException {
 			
 			Asignar datosConsulta = mostrar.consultaAsig(NIF_Consulta.getText());
 			
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/asignar/ModificarAsignacion.fxml"));
-			GridPane ventanaDos = (GridPane) loader.load();
-			Stage ventana = new Stage();
-			ventana.setTitle("ModificarAsignacion");
-			Scene scene = new Scene(ventanaDos);
-			
-			ControladorModificacion controladoraVentana2 = loader.getController();
-			controladoraVentana2.setDatos(datosConsulta);
-	 	  
-			ventana.setScene(scene);
-			ventana.show();
+			controlador.asignarModVent(datosConsulta);
 		}
 			else {
 					
@@ -157,5 +162,7 @@ public void asignar() throws SQLException {
 			}
   }
 	
-	
+	public void volver(ActionEvent event) {
+		controlador.menuVent();
+	}
 }

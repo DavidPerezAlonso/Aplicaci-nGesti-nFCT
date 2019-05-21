@@ -3,6 +3,7 @@ package view.empresas;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import controller.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,6 +15,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import model.ConexionBBDD;
 import model.TutorEmpresa;
 
@@ -72,7 +74,14 @@ public class ControladorModificarTE {
 	
 	TutorEmpresa selectedTutorEmpresa;
 	
-
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
 	public void initialize() {
 		
 		ColNIF.setCellValueFactory(new PropertyValueFactory<TutorEmpresa, String>("NIF_TE"));
@@ -117,6 +126,12 @@ public class ControladorModificarTE {
 			String NIFAnterior = this.selectedTutorEmpresa.getNIF_TE();
 
 			modificar.modificarTutorE(niftexto, nomtexto, teltexto, mailtexto, convtexto, NIFAnterior);
+			
+        	Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Tutor de empresa modificado.");
+			alert.setHeaderText(null);
+			alert.setContentText("¡ Los datos del tutor de empresa " + nomtexto + " han sido modificados correctamente !");
+			alert.showAndWait();
 		}
 		else {
 			
@@ -138,5 +153,9 @@ public class ControladorModificarTE {
 		email.setText(selectedTutorEmpresa.getEmail());
 		nconv.setText(selectedTutorEmpresa.getNconv());
 		
+	}
+	
+	public void volver(ActionEvent event) {
+		controlador.empresaVent();
 	}
 }

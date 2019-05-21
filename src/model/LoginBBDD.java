@@ -118,4 +118,18 @@ public class LoginBBDD {
 
 				stmt.close();
 		}
+		
+		public static void cambiarPass(String password) throws SQLException{
+			
+			Statement stmt = conexion.createStatement();
+			
+			try {
+				stmt.executeUpdate("UPDATE " + usr + ".USUARIOS SET PASSWORD='" + password + "'");
+				
+				}catch(SQLException s) {
+					s.printStackTrace();
+				}
+
+				stmt.close();
+		}
 }

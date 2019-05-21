@@ -2,12 +2,15 @@ package view.empresas;
 
 import java.sql.SQLException;
 
+import controller.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.ConexionBBDD;
 
 public class ControladorCrearE {
@@ -63,6 +66,14 @@ public class ControladorCrearE {
 	@FXML 
 	TextField fecha_conv;
 	
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
 	public void crearEmpresa() throws SQLException {
         
 		ConexionBBDD insertar = new ConexionBBDD();
@@ -84,6 +95,11 @@ public class ControladorCrearE {
         
         insertar.insertarEmpresa(convtexto, reptexto, nifreptexto, ciftexto, nomtexto, dirtexto, cptexto, ciutexto, provtexto, paistexto, teltexto, faxtexto, fechatexto);
         
+    	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Empresa registrado.");
+		alert.setHeaderText(null);
+		alert.setContentText("¡ La nueva empresa se ha registrado correctamente !");
+		alert.showAndWait();
 		}
 		
 		else {
@@ -115,4 +131,7 @@ public class ControladorCrearE {
 		
 	}	
 
+	public void volver(ActionEvent event) {
+		controlador.empresaVent();
+	}
 }

@@ -2,12 +2,15 @@ package view.empresas;
 
 import java.sql.SQLException;
 
+import controller.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.ConexionBBDD;
 
 public class ControladorCrearTE {
@@ -39,6 +42,14 @@ public class ControladorCrearTE {
 	@FXML 
 	TextField nconv;
 	
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
 public void crearTutorE() throws SQLException {
         
 		ConexionBBDD insertar = new ConexionBBDD();
@@ -51,6 +62,12 @@ public void crearTutorE() throws SQLException {
 			String convtexto = nconv.getText();
 
 			insertar.insertarTutorE(niftexto, nomtexto, teltexto, mailtexto, convtexto);
+			
+        	Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Tutor de empresa registrado.");
+			alert.setHeaderText(null);
+			alert.setContentText("¡ El nuevo tutor de empresa se ha registrado correctamente en la empresa " + convtexto + " !");
+			alert.showAndWait();
 		}
 		
 		else {
@@ -73,6 +90,10 @@ public void limpiarTexto() {
 	email.setText("");
 	nconv.setText("");
 
+}
+
+public void volver(ActionEvent event) {
+	controlador.empresaVent();
 }
 
 }

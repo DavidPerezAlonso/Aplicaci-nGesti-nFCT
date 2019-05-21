@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
@@ -30,12 +31,24 @@ public class ControladoraLogin {
 	TextField user;
 	
 	@FXML 
-	TextField pass;
-	
+	PasswordField pass;
+
+
 	@FXML
 	Button registrar;
 	
-
+	@FXML
+	Button cambiar;
+	
+	Main controlador;
+	
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
 
 public void menu(ActionEvent event) throws IOException{
 	
@@ -52,13 +65,13 @@ public void menu(ActionEvent event) throws IOException{
 		
 			if (passVerificada.equals(password)) {
 				
-				FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/InterfazMenu.fxml"));
-		        AnchorPane ventanaDos = (AnchorPane) loader.load();
-		        Stage ventana = new Stage();
-		        ventana.setTitle("Menu Principal");
-		        Scene scene = new Scene(ventanaDos);
-		        ventana.setScene(scene);
-		        ventana.show();
+				controlador.menuVent();
+				
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Login correcto.");
+				alert.setHeaderText(null);
+				alert.setContentText("¡ Bienvenido " + usuario + " !");
+				alert.showAndWait();
 			}
 			
 			else {
@@ -84,14 +97,14 @@ public void menu(ActionEvent event) throws IOException{
 
 	public void registrar(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/InterfazRegistro.fxml"));
-	    AnchorPane ventanaDos = (AnchorPane) loader.load();
-	    Stage ventana = new Stage();
-	    ventana.setTitle("Nuevo usuario");
-	    Scene scene = new Scene(ventanaDos);
-	    ventana.setScene(scene);
-	    ventana.show();
+		controlador.registroVent();
 	   
+	   
+	}
+	
+	public void cambiarPass(ActionEvent event) throws IOException{
+		
+		controlador.cambiarPassVent();
 	   
 	}
 

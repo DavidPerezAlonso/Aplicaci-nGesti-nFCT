@@ -2,10 +2,15 @@ package view.empresas;
 
 import java.sql.SQLException;
 
+import controller.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.Alumno;
 import model.ConexionBBDD;
 import model.Empresa;
@@ -65,10 +70,19 @@ public class ControladorModificarE {
 	
 	Empresa datosmodificar;
 	
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
 public void modificarEmpresa() throws SQLException {
 	
 	ConexionBBDD modificar = new ConexionBBDD();
-        
+	if(!n_conv.getText().equals("") && n_conv.getText() != null && !representante.getText().equals("") && representante.getText() != null && !NIF_REP.getText().equals("") && NIF_REP.getText() != null && !CIF.getText().equals("") && CIF.getText() != null && !nombre.getText().equals("") && nombre.getText() != null && !direccion.getText().equals("") && direccion.getText() != null && !cp.getText().equals("") && cp.getText() != null && !ciudad.getText().equals("") && ciudad.getText() != null  && !provincia.getText().equals("") && provincia.getText() != null && !pais.getText().equals("") && pais.getText() != null && !telefono.getText().equals("") && telefono.getText() != null && !fax.getText().equals("") && fax.getText() != null && !fecha_conv.getText().equals("") && fecha_conv.getText() != null) {
+		
 		String convtexto = n_conv.getText();
         String reptexto = representante.getText();
         String nifreptexto = NIF_REP.getText();
@@ -85,6 +99,22 @@ public void modificarEmpresa() throws SQLException {
         
         modificar.modificarEmpresa(convtexto, reptexto, nifreptexto, ciftexto, nomtexto, dirtexto, cptexto, ciutexto, provtexto, paistexto, teltexto, faxtexto, fechatexto);
         
+    	Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Empresa modificada.");
+		alert.setHeaderText(null);
+		alert.setContentText("¡ Los datos modificados han sido registrados correctamente !");
+		alert.showAndWait();
+	}
+	
+	else {
+		
+		Alert alert = new Alert(AlertType.ERROR);
+    	alert.setTitle("Mensaje de error");
+    	alert.setHeaderText("¡ Faltan datos !");
+    	alert.setContentText("Por favor, rellene todos los campos correctamente.");
+    	alert.showAndWait();
+	} 
+	
 	}
 	
 	public void reestablecer() {
@@ -126,4 +156,7 @@ public void modificarEmpresa() throws SQLException {
 		
 	}
 
+	public void volver(ActionEvent event) {
+		controlador.empresaVent();
+	}
 }

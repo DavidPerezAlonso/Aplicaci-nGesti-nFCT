@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ControladoraCambiarPass">
+   <children>
+      <AnchorPane prefHeight="292.0" prefWidth="374.0">
+         <children>
+            <Text fill="#822828" layoutX="133.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cambiar contraseña">
+               <font>
+                  <Font name="Trebuchet MS" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#822828" layoutX="31.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nueva contraseña:">
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font>
+            </Text>
+            <Text fill="#822828" layoutX="31.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:">
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font>
+            </Text>
+            <Text fill="#822828" layoutX="31.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirma nueva contraseña:">
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font>
+            </Text>
+            <Text fill="#822828" layoutX="30.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña actual:">
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font>
+            </Text>
+            <TextField fx:id="user" layoutX="195.0" layoutY="82.0" />
+            <PasswordField fx:id="passAct" layoutX="195.0" layoutY="113.0" />
+            <PasswordField fx:id="passNue" layoutX="195.0" layoutY="144.0" />
+            <PasswordField fx:id="passNueConf" layoutX="195.0" layoutY="175.0" />
+            <Button fx:id="cambiar" layoutX="106.0" layoutY="234.0" mnemonicParsing="false" onAction="#cambiarPass" text="Cambiar" textFill="#822828">
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#ab1717">
+                     <input>
+                        <InnerShadow color="#a48341" />
+                     </input>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <Button fx:id="volver" layoutX="232.0" layoutY="234.0" mnemonicParsing="false" onAction="#volver" text="Volver" textFill="#822828">
+               <effect>
+                  <DropShadow color="#09513c">
+                     <input>
+                        <InnerShadow color="#174917" />
+                     </input>
+                  </DropShadow>
+               </effect>
+               <font>
+                  <Font name="Trebuchet MS" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="logo" fitHeight="45.0" fitWidth="81.0" layoutX="284.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

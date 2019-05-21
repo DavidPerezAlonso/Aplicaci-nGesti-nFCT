@@ -103,6 +103,14 @@ public class ControladorEmpresa {
 	@FXML 
 	Button buscar;
 	
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
 	
 	public void initialize() {
 			
@@ -141,13 +149,7 @@ public class ControladorEmpresa {
 	
 	public void crearEmpresa(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/CrearEmpresa.fxml"));
-	    GridPane ventanaDos = (GridPane) loader.load();
-	    Stage ventana = new Stage();
-	    ventana.setTitle("CrearEmpresa");
-	    Scene scene = new Scene(ventanaDos);
-	    ventana.setScene(scene);
-	    ventana.show();
+		controlador.empresaCrearVent();
 	}
 	
 	public void modificarEmpresa(ActionEvent event) throws IOException{
@@ -156,17 +158,8 @@ public class ControladorEmpresa {
 		Empresa selectedEmpresa = empresas.getSelectionModel().getSelectedItem();
 	
 		if (selectedEmpresa != null) {
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/ModificarEmpresa.fxml"));
-	    GridPane ventanaDos = (GridPane) loader.load();
-	    Stage ventana = new Stage();
-	    ventana.setTitle("ModificarEmpresa");
-	    Scene scene = new Scene(ventanaDos);
-	    
-	    ControladorModificarE controladoraVentana2 = loader.getController();
-	    controladoraVentana2.setDatos(selectedEmpresa);
-	    
-	    ventana.setScene(scene);
-	    ventana.show();
+		
+			controlador.empresaModVent(selectedEmpresa);
 		}
 		
 		else
@@ -182,24 +175,16 @@ public class ControladorEmpresa {
 	
 	public void crearTutorEmpresa(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/CrearTutorEmpresa.fxml"));
-	    GridPane ventanaDos = (GridPane) loader.load();
-	    Stage ventana = new Stage();
-	    ventana.setTitle("CrearTutorEmpresa");
-	    Scene scene = new Scene(ventanaDos);
-	    ventana.setScene(scene);
-	    ventana.show();
+		controlador.empresaTutVent();
 	}
 	
 	public void modificarTutorEmpresa(ActionEvent event) throws IOException{
 		
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/empresas/ModificarTutorEmpresa.fxml"));
-	    AnchorPane ventanaDos = (AnchorPane) loader.load();
-	    Stage ventana = new Stage();
-	    ventana.setTitle("ModificarTutorEmpresa");
-	    Scene scene = new Scene(ventanaDos);
-	    ventana.setScene(scene);
-	    ventana.show();
+		controlador.empresaTutModVent();
+	}
+	
+	public void volver(ActionEvent event) {
+		controlador.menuVent();
 	}
 }
 

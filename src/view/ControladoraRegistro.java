@@ -8,11 +8,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import controller.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import model.LoginBBDD;
 
@@ -32,6 +35,25 @@ public class ControladoraRegistro {
 	
 	@FXML
 	Button registrar;
+	
+	@FXML 
+	Button volver;
+	
+	@FXML
+	ImageView logo;
+	
+	Main controlador;
+	
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
+	public void volver(ActionEvent event) {
+		controlador.loginVent();
+	}
 	
 	public ControladoraRegistro() {
 

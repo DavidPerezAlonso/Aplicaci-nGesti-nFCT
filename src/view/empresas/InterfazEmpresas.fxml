@@ -54,7 +54,7 @@
                </input>
             </DropShadow>
          </effect></Button>
-      <Button fx:id="volver" layoutX="1085.0" layoutY="397.0" mnemonicParsing="false" text="Volver" textFill="#822828">
+      <Button fx:id="volver" layoutX="1085.0" layoutY="397.0" mnemonicParsing="false" onAction="#volver" text="Volver" textFill="#822828">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
          </font>

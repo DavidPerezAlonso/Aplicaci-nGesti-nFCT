@@ -2,12 +2,15 @@ package view.asignar;
 
 import java.sql.SQLException;
 
+import controller.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.Asignar;
 import model.Ciclo;
 import model.ConexionBBDD;
@@ -64,6 +67,14 @@ public class ControladorModificacion {
 	
 	Asignar datosmodificar;
 	
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
 
 	public void modificarAsignacion() throws SQLException {
 		
@@ -86,6 +97,12 @@ public class ControladorModificacion {
 			String AL_Anterior = datosmodificar.getNIF_AL();
 
 			modificar.modificarPracticas(nifatexto, convtexto, niftctexto, niftetexto, fitexto, fftexto, hdiatexto, totaltexto, himtexto, hfmtexto, hittexto, hfttexto, AL_Anterior);
+			
+        	Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Prácticas modificadas.");
+			alert.setHeaderText(null);
+			alert.setContentText("¡ Los datos modificados han sido registrados !");
+			alert.showAndWait();
 		}
 		
 		else {
@@ -133,5 +150,9 @@ public class ControladorModificacion {
 		horaInicioT.setText(datosmodificar.getHoraInicioT());
 		horaFinT.setText(datosmodificar.getHoraFinT());
 		
+	}
+	
+	public void volver(ActionEvent event) {
+		controlador.asignarVent();
 	}
 }

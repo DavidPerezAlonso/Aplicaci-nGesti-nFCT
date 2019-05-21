@@ -2,6 +2,8 @@ package view.tutores;
 
 import java.sql.SQLException;
 
+import controller.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -9,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import model.Ciclo;
 import model.ConexionBBDD;
 import model.TutorCentro;
@@ -44,6 +47,13 @@ public class ControladorModificarTC {
 	
 	TutorCentro datosmodificar;
 	
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
 	
 	public void modificarTutorC() throws SQLException {
         
@@ -56,6 +66,12 @@ public class ControladorModificarTC {
 			String mailtexto = email.getText();
 
 			modificar.modificarTutorC(niftexto, nomtexto, teltexto, mailtexto);
+			
+        	Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Tutor centro modificado.");
+			alert.setHeaderText(null);
+			alert.setContentText("¡ Los datos del tutor del centro " + nomtexto + " han sido modificados correctamente !");
+			alert.showAndWait();
 		}
 		
 		else {
@@ -89,4 +105,7 @@ public class ControladorModificarTC {
 		email.setText(datosmodificar.getEmail());
 	}
 	
+	public void volver(ActionEvent event) {
+		controlador.tutoresVent();
+	}
 }

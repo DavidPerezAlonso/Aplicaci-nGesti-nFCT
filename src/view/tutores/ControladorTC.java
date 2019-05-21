@@ -70,6 +70,14 @@ public class ControladorTC {
 	@FXML
 	Button buscar;
 	
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
 	public void initialize() {
 		
 		ColNIF.setCellValueFactory(new PropertyValueFactory<TutorCentro, String>("NIF_TC"));
@@ -99,13 +107,7 @@ public class ControladorTC {
 
 	public void crearTutorC(ActionEvent event) throws IOException {
 	
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/tutores/CrearTutorCentro.fxml"));
-		GridPane ventanaDos = (GridPane) loader.load();
-		Stage ventana = new Stage();
-		ventana.setTitle("CrearTutor");
-		Scene scene = new Scene(ventanaDos);
-		ventana.setScene(scene);
-		ventana.show();
+		controlador.tutoresCrearVent();
 	}
 
 	public void modificarTutorC(ActionEvent event) throws IOException{
@@ -113,17 +115,8 @@ public class ControladorTC {
 		TutorCentro selectedTutor= tutoresc.getSelectionModel().getSelectedItem();
 	
 		if (selectedTutor != null) {
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("../view/tutores/ModificarTutorCentro.fxml"));
-			GridPane ventanaDos = (GridPane) loader.load();
-			Stage ventana = new Stage();
-			ventana.setTitle("ModificarTutor");
-	    	Scene scene = new Scene(ventanaDos);
-	    
-	    	ControladorModificarTC controladoraVentana2 = loader.getController();
-	    	controladoraVentana2.setDatos(selectedTutor);
-	    
-	    	ventana.setScene(scene);
-	    	ventana.show();
+			
+			controlador.tutoresModVent(selectedTutor);
 		}
 	
 		else
@@ -137,5 +130,7 @@ public class ControladorTC {
 
 	}
 	
-
+	public void volver(ActionEvent event) {
+		controlador.menuVent();
+	}
 }

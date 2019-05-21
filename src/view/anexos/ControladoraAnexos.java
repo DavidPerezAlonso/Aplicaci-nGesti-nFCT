@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import com.itextpdf.text.DocumentException;
 
+import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import model.Alumno;
 import model.AnexoI;
 import model.AnexoII;
@@ -122,6 +124,15 @@ public class ControladoraAnexos {
 
 	String ciclo;
 	String curso;
+	
+	Main controlador;
+	Stage ventana;
+	
+	public void setVentana(Main controlador, Stage ventana) {
+		this.controlador= controlador;
+		this.ventana= ventana;
+	}
+	
 	
 	
 	public void initialize() {
@@ -274,5 +285,9 @@ public class ControladoraAnexos {
 			alert.setContentText("Por favor, introduzca el nombre del anexo.");
 			alert.showAndWait();
 		}
+	}
+	
+	public void volver(ActionEvent event) {
+		controlador.menuVent();
 	}
 }
