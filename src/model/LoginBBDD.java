@@ -11,18 +11,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-import javafx.collections.ObservableList;
-
 public class LoginBBDD {
-		
+
 	private String url= "";
 	private static String user = "";
 	private String pwd = "";
 	private static String usr = "";
 	private static Connection conexion;
-	
+
 		public LoginBBDD()  {
-			
+
 			Properties propiedades = new Properties();
 			InputStream entrada = null;
 			try {
@@ -48,29 +46,29 @@ public class LoginBBDD {
 					}
 				}
 			}
-			
+
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				conexion = DriverManager.getConnection(url, user, pwd);
-				
+
 				if(!conexion.isClosed()) {
 					System.out.println("Conexión establecida");
 					//conexion.close();
 				}
 				else
-					System.out.println("Fallo en Conexión");	
-				
+					System.out.println("Fallo en Conexión");
+
 
 			}catch (Exception e) {
-				System.out.println("ERROR en conexión con ORACLE");	
+				System.out.println("ERROR en conexión con ORACLE");
 				e.printStackTrace();
 			}
 		}
-		
+
 		public String comprobarUser(String usuario){
-			
+
 			String data = null;
-			
+
 			try {
 				Statement stmt = conexion.createStatement();
 				ResultSet rset = stmt.executeQuery("SELECT USUARIO FROM " + usr + ".USUARIOS WHERE USUARIO='" + usuario + "'");
@@ -79,17 +77,17 @@ public class LoginBBDD {
 				}
 				rset.close();
 				stmt.close();
-				
+
 			}catch (SQLException s){
 				s.printStackTrace();
 			}
 			return data;
 		}
-		
+
 		public String comprobarPass(String usuario){
-			
+
 			String data = null;
-			
+
 			try {
 				Statement stmt = conexion.createStatement();
 				ResultSet rset = stmt.executeQuery("SELECT PASSWORD FROM " + usr + ".USUARIOS WHERE USUARIO='" + usuario + "'");
@@ -98,36 +96,36 @@ public class LoginBBDD {
 				}
 				rset.close();
 				stmt.close();
-				
+
 			}catch (SQLException s){
 				s.printStackTrace();
 			}
 			return data;
 		}
-		
-		
+
+
 		public static void crearUsuario(String usuario, String password) throws SQLException{
-			
+
 			Statement stmt = conexion.createStatement();
 
 				try {
-				
+
 					stmt.executeUpdate("INSERT INTO " + usr + ".USUARIOS VALUES ('"+ usuario + "','" + password + "')");
-					
+
 					}catch(SQLException s) {
 						s.printStackTrace();
 					}
 
 				stmt.close();
 		}
-		
+
 		public static void cambiarPass(String password) throws SQLException{
-			
+
 			Statement stmt = conexion.createStatement();
-			
+
 			try {
 				stmt.executeUpdate("UPDATE " + usr + ".USUARIOS SET PASSWORD='" + password + "'");
-				
+
 				}catch(SQLException s) {
 					s.printStackTrace();
 				}

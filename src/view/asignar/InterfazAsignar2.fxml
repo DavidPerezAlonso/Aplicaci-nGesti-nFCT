@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="719.0" prefWidth="1341.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.asignar.ControladorAsignar2">
+   <children>
+      <TextField fx:id="horasDia" layoutX="1133.0" layoutY="313.0" maxWidth="145.0" prefHeight="26.0" prefWidth="58.0" />
+      <TextField fx:id="horasTotal" layoutX="1133.0" layoutY="227.0" maxWidth="145.0" prefHeight="26.0" prefWidth="58.0" />
+      <TextField fx:id="horaInicioM" layoutX="1131.0" layoutY="360.0" maxWidth="145.0" prefHeight="26.0" prefWidth="73.0" />
+      <TextField fx:id="horaFinM" layoutX="1131.0" layoutY="394.0" maxWidth="145.0" prefHeight="26.0" prefWidth="73.0" />
+      <TextField fx:id="horaInicioT" layoutX="1131.0" layoutY="428.0" maxWidth="145.0" prefHeight="26.0" prefWidth="74.0" />
+      <TextField fx:id="horaFinT" layoutX="1131.0" layoutY="462.0" maxWidth="145.0" prefHeight="26.0" prefWidth="74.0" />
+      <Text fill="#822828" layoutX="1030.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Inicio:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" layoutX="1036.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Fin:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" layoutX="1059.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horas/Día:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" layoutX="1036.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horas/Totales:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" layoutX="1010.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora inicio mañana:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" layoutX="1029.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora fin mañana:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" layoutX="1028.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora inicio tarde:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" layoutX="1036.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora fin tarde:">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <Button fx:id="asignar" layoutX="462.0" layoutY="575.0" mnemonicParsing="false" onAction="#asignar" prefHeight="30.0" prefWidth="125.0" text="Asignar" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button fx:id="limpiar" layoutX="717.0" layoutY="575.0" mnemonicParsing="false" onAction="#limpiarTexto" prefHeight="30.0" prefWidth="125.0" text="Limpiar" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button fx:id="volver" layoutX="942.0" layoutY="640.0" mnemonicParsing="false" onAction="#volver" text="Volver" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#09513c">
+               <input>
+                  <InnerShadow color="#174917" />
+               </input>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Text fill="#822828" layoutX="433.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Asignar Prácticas">
+         <font>
+            <Font name="Trebuchet MS" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#822828" layoutX="246.0" layoutY="653.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF Alumno: ">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+      </Text>
+      <TextField fx:id="NIF_Consulta" layoutX="325.0" layoutY="637.0" prefWidth="216.0" />
+      <Button fx:id="consultar" layoutX="558.0" layoutY="637.0" mnemonicParsing="false" onAction="#consultaAsig" prefHeight="25.0" prefWidth="203.0" text="Consultar/Modificar Asignación" textFill="#822828">
+         <font>
+            <Font name="Trebuchet MS" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow color="#ab1717">
+               <input>
+                  <InnerShadow color="#a48341" />
+               </input>
+            </DropShadow>
+         </effect>
+      </Button>
+      <ImageView fx:id="logo" fitHeight="70.0" fitWidth="102.0" layoutX="1176.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../logo.png" />
+         </image>
+      </ImageView>
+      <DatePicker fx:id="fechaInicio" layoutX="1116.0" layoutY="136.0" />
+      <DatePicker fx:id="fechaFin" layoutX="1116.0" layoutY="185.0" />
+      <Label layoutX="162.0" layoutY="66.0" text="Alumnos">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="17.0" layoutY="113.0" text="Ciclo" />
+      <ComboBox fx:id="cmb_ciclo" layoutX="51.0" layoutY="108.0" onAction="#FiltrarAlumno" prefHeight="26.0" prefWidth="146.0" />
+      <Label layoutX="212.0" layoutY="113.0" text="Curso" />
+      <ComboBox fx:id="cmb_curso" layoutX="256.0" layoutY="109.0" onAction="#FiltrarAlumno" prefHeight="26.0" prefWidth="127.0" />
+      <TableView fx:id="tab_alumno" layoutX="30.0" layoutY="163.0" prefHeight="415.0" prefWidth="358.0">
+        <columns>
+          <TableColumn fx:id="col_NIFalumno" prefWidth="103.19997787475586" text="NIF" />
+          <TableColumn fx:id="col_Nombrealumno" prefWidth="78.39996337890625" text="Nombre" />
+            <TableColumn fx:id="col_Apellidoalumno" prefWidth="175.99999084472654" text="Apelidos" />
+        </columns>
+      </TableView>
+      <Label layoutX="843.0" layoutY="77.0" text="Tutor Centro">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tab_TutorCentro" layoutX="779.0" layoutY="110.0" prefHeight="146.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="col_NombreTC" prefWidth="119.199951171875" text="Nombre" />
+            <TableColumn fx:id="col_NIFTC" text="NIF" />
+        </columns>
+      </TableView>
+      <Label layoutX="533.0" layoutY="75.0" text="Empresas" />
+      <Label layoutX="457.0" layoutY="112.0" text="Nombre" />
+      <TextField layoutX="511.0" layoutY="109.0" prefHeight="26.0" prefWidth="146.0" />
+      <TableView fx:id="tab_empresa" layoutX="417.0" layoutY="167.0" onMouseClicked="#MostrarTutorEmpresa" prefHeight="354.0" prefWidth="314.0">
+        <columns>
+          <TableColumn fx:id="col_CIFEmpresa" prefWidth="80.79998779296875" text="CIF" />
+          <TableColumn fx:id="col_NConvEmpresa" prefWidth="62.399932861328125" text="Convenio" />
+            <TableColumn fx:id="col_NombreEmpresa" prefWidth="168.800048828125" text="Nombre" />
+        </columns>
+      </TableView>
+      <Label layoutX="838.0" layoutY="288.0" text="Tutor Empresa">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tab_TutorEmpresa" layoutX="779.0" layoutY="326.0" prefHeight="192.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="col_NIFTE" prefWidth="75.0" text="NIF" />
+          <TableColumn fx:id="col_NombreTE" prefWidth="123.99993896484375" text="Nombre" />
+        </columns>
+      </TableView>
+      <Label layoutX="1099.0" layoutY="84.0" text="Periodo FCTs y Horarios" />
+   </children>
+</AnchorPane>

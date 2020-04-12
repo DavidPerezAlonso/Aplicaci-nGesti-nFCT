@@ -1,7 +1,7 @@
 package model;
 
 public class Alumno {
-	
+
 	private String NIF;
 	private String nombre;
 	private String apellidos;
@@ -11,8 +11,8 @@ public class Alumno {
 	private String provincia;
 	private String telefono;
 	private String email;
-	
-	
+
+
 	public Alumno(String nIF, String nombre, String apellidos, String direccion, String ciudad, String cp,
 			String provincia, String telefono, String email) {
 
@@ -27,7 +27,7 @@ public class Alumno {
 		this.email = email;
 	}
 
-	
+
 
 	public Alumno(String nIF, String nombre, String apellidos) {
 		super();
@@ -126,5 +126,15 @@ public class Alumno {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Alumno [NIF=" + NIF + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion=" + direccion
+				+ ", ciudad=" + ciudad + ", cp=" + cp + ", provincia=" + provincia + ", telefono=" + telefono
+				+ ", email=" + email + "]";
+	}
+
 
 }

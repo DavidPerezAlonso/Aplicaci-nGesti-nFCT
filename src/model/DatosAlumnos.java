@@ -22,13 +22,14 @@ public class DatosAlumnos {
 	private String nombretutor;
 	private String DNItutor;
 	private String nombretutoremp;
+	private String familiaprofesional;
 
 
 	public DatosAlumnos(String curso, String claveciclo, String ciclo, String fechainicio, String fechafin,
 			String diassemana, String horainiciomañana, String horainiciotarde, String horafinmañana,
 			String horafintarde, int horasdia, int totalhoras, String localidad, String direccion, String nombrealumno,
 			String apellidosalumno, String dNIalumno, String nombretutor, String dNItutor,
-			String nombretutoremp) {
+			String nombretutoremp, String familiaprofesional) {
 		super();
 		this.curso = curso;
 		this.claveciclo = claveciclo;
@@ -50,6 +51,17 @@ public class DatosAlumnos {
 		this.nombretutor = nombretutor;
 		DNItutor = dNItutor;
 		this.nombretutoremp = nombretutoremp;
+		this.familiaprofesional = familiaprofesional;
+	}
+
+
+	public String getFamiliaprofesional() {
+		return familiaprofesional;
+	}
+
+
+	public void setFamiliaprofesional(String familiaprofesional) {
+		this.familiaprofesional = familiaprofesional;
 	}
 
 

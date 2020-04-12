@@ -80,7 +80,7 @@
             </DropShadow>
          </effect></Button>
       <ChoiceBox fx:id="ciclos" layoutX="52.0" layoutY="139.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="cursos" layoutX="240.0" layoutY="139.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cursos" layoutX="240.0" layoutY="139.0" prefWidth="150.0" onAction="#filtrar"/>
       <Text fill="#822828" layoutX="114.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciclo">
          <font>
             <Font name="Trebuchet MS" size="12.0" />

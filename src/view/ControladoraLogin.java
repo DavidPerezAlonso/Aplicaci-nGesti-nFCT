@@ -1,81 +1,74 @@
 package view;
 
-import java.io.File;
-import java.io.FileInputStream;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.util.Properties;
 
 import controller.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.LoginBBDD;
 
 
 public class ControladoraLogin {
-	
-	@FXML 
+
+	@FXML
 	Button login;
-	
+
 	@FXML
 	TextField user;
-	
-	@FXML 
+
+	@FXML
 	PasswordField pass;
 
 
 	@FXML
 	Button registrar;
-	
+
 	@FXML
 	Button cambiar;
-	
+
 	Main controlador;
-	
+
 	Stage ventana;
-	
+
 	public void setVentana(Main controlador, Stage ventana) {
 		this.controlador= controlador;
 		this.ventana= ventana;
 	}
-	
+
 
 public void menu(ActionEvent event) throws IOException{
-	
+
 		LoginBBDD login = new LoginBBDD();
-	
+
 		String usuario = user.getText();
 		String password = pass.getText();
-		
+
 		String usuarioVerificado = login.comprobarUser(usuario);
-		
+
 		if (usuarioVerificado != null) {
-			
+
 			String passVerificada = login.comprobarPass(usuario);
-		
+
 			if (passVerificada.equals(password)) {
-				
+
 				controlador.menuVent();
-				
+
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Login correcto.");
 				alert.setHeaderText(null);
 				alert.setContentText("¡ Bienvenido " + usuario + " !");
 				alert.showAndWait();
 			}
-			
+
 			else {
-				
+
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Mensaje de error");
 				alert.setHeaderText("¡ Contraseña incorrecta !");
@@ -83,9 +76,9 @@ public void menu(ActionEvent event) throws IOException{
 				alert.showAndWait();
 			}
 		}
-		
+
 		else {
-		
+
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Mensaje de error");
 			alert.setHeaderText("¡ Usuario no registrado !");
@@ -96,16 +89,16 @@ public void menu(ActionEvent event) throws IOException{
 
 
 	public void registrar(ActionEvent event) throws IOException{
-		
+
 		controlador.registroVent();
-	   
-	   
+
+
 	}
-	
+
 	public void cambiarPass(ActionEvent event) throws IOException{
-		
+
 		controlador.cambiarPassVent();
-	   
+
 	}
 
 }

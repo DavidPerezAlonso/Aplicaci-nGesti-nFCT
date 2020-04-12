@@ -1,7 +1,7 @@
 package model;
 
 public class Empresa {
-	
+
 	private String nConv;
 	private String representante;
 	private String NIF_REP;
@@ -15,7 +15,7 @@ public class Empresa {
 	private String telefono;
 	private String fax;
 	private String fecha_conv;
-	
+
 	public Empresa(String nConv, String representante, String nIF_REP, String cIF, String nombre, String direccion,
 			String cp, String ciudad, String provincia, String pais, String telefono, String fax, String fecha_conv) {
 		super();
@@ -35,7 +35,7 @@ public class Empresa {
 	}
 
 	public String getnConv() {
-		return nConv;
+		return this.nConv;
 	}
 
 	public void setnConv(String nConv) {
