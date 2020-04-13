@@ -111,16 +111,16 @@ public class ControladorAsignar2 {
 	private TextField horasTotal;
 
 	@FXML
-	private TextField horaInicioM;
+	private ComboBox<String> horaInicioM;
 
 	@FXML
-	private TextField horaFinM;
+	private ComboBox<String> horaFinM;
 
 	@FXML
-	private TextField horaInicioT;
+	private ComboBox<String> horaInicioT;
 
 	@FXML
-	private TextField horaFinT;
+	private ComboBox<String> horaFinT;
 
 	@FXML
 	private TextField NIF_Consulta;
@@ -180,6 +180,17 @@ public class ControladorAsignar2 {
 		col_NombreTC.setCellValueFactory(new PropertyValueFactory<TutorCentro, String>("nombre"));
 		col_NIFTC.setCellValueFactory(new PropertyValueFactory<TutorCentro, String>("NIF_TC"));
 
+
+		// Inicializa los combobox de hora de inicio y fin
+		ObservableList <String> manana = FXCollections.observableArrayList("", "07:00", "07:30", "08:00","08:30", "09:00","09:30", "10:00", "10:30", "11:00","11:30","12:00","12:30", "13:00","13:30", "14:00","14:30", "15:00","15:30" );
+		ObservableList <String> tarde = FXCollections.observableArrayList("","14:00", "14:30", "15:00","15:30", "16:00","16:30", "17:00", "17:30", "18:00","18:30","19:00","19:30", "20:00","20:30", "21:00","21:30", "22:00","22:30" );
+
+		horaInicioM.setItems(manana);
+		horaFinM.setItems(manana);
+		horaInicioT.setItems(tarde);
+		horaFinT.setItems(tarde);
+
+
 	}
 
 
@@ -194,13 +205,26 @@ public void asignar() throws SQLException {
 
 		ObservableList<Alumno> alumnos = tab_alumno.getSelectionModel().getSelectedItems();
 
-		nconv = tab_empresa.getSelectionModel().getSelectedItem().getnConv();
-		NIF_TC = tab_TutorCentro.getSelectionModel().getSelectedItem().getNIF_TC();
-		NIF_TE = tab_TutorEmpresa.getSelectionModel().getSelectedItem().getNIF_TE();
+		if(tab_empresa.getSelectionModel().getSelectedIndex() >= 0){
+			nconv = tab_empresa.getSelectionModel().getSelectedItem().getnConv();
+			if(tab_TutorCentro.getSelectionModel().getSelectedIndex() >= 0){
+				NIF_TC = tab_TutorCentro.getSelectionModel().getSelectedItem().getNIF_TC();
+				if(tab_TutorEmpresa.getSelectionModel().getSelectedIndex() >= 0)
+					NIF_TE = tab_TutorEmpresa.getSelectionModel().getSelectedItem().getNIF_TE();
+			}
+		}
 
+		if(fechaInicio.getValue() == null || fechaFin.getValue() == null){
 
+			Alert alert = new Alert(AlertType.ERROR);
+	    	alert.setTitle("Mensaje de error");
+	    	alert.setHeaderText("¡ Faltan datos !");
+	    	alert.setContentText("Por favor, rellene los campos de fecha de inicio / fin de FCTs.");
+	    	alert.showAndWait();
+	    	return;
+		}
 
-		if(alumnos.size() > 0 && !nconv.equals("") && !NIF_TC.equals("") && !NIF_TE.equals("") && !fechaInicio.getValue().equals("") && fechaInicio.getValue() != null && !fechaFin.getValue().equals("") && fechaFin.getValue() != null && !horasDia.getText().equals("") && horasDia.getText() != null && !horasTotal.getText().equals("") && horasTotal.getText() != null) {
+		if(alumnos.size() > 0 && !nconv.equals("") && !NIF_TC.equals("") && !NIF_TE.equals("") && !horasDia.getText().equals("") && horasDia.getText() != null && !horasTotal.getText().equals("") && horasTotal.getText() != null) {
 
 			// Comprueba que la fecha fin es posterior a la de inicio
 			if(ChequearFecha() == false)
@@ -226,10 +250,10 @@ public void asignar() throws SQLException {
 			String fitexto = fechaInicio.getValue().format(isoFecha);
 			String fftexto = fechaFin.getValue().format(isoFecha);
 
-			String himtexto = horaInicioM.getText();
-			String hfmtexto = horaFinM.getText();
-			String hittexto = horaInicioT.getText();
-			String hfttexto = horaFinT.getText();
+			String himtexto = horaInicioM.getSelectionModel().getSelectedItem();
+			String hfmtexto = horaFinM.getSelectionModel().getSelectedItem();
+			String hittexto = horaInicioT.getSelectionModel().getSelectedItem();
+			String hfttexto = horaFinT.getSelectionModel().getSelectedItem();
 
 			for(Alumno a: alumnos){
 				String nifatexto = a.getNIF();
@@ -266,10 +290,10 @@ public void asignar() throws SQLException {
 		fechaFin.setValue(null);
 		horasDia.setText("");
 		horasTotal.setText("");
-		horaInicioM.setText("");
-		horaFinM.setText("");
-		horaInicioT.setText("");
-		horaFinT.setText("");
+		horaInicioM.getSelectionModel().clearSelection();
+		horaFinM.getSelectionModel().clearSelection();
+		horaInicioT.getSelectionModel().clearSelection();
+		horaFinT.getSelectionModel().clearSelection();
 
 	}
 

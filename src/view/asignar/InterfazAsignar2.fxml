@@ -19,10 +19,6 @@
    <children>
       <TextField fx:id="horasDia" layoutX="1133.0" layoutY="313.0" maxWidth="145.0" prefHeight="26.0" prefWidth="58.0" />
       <TextField fx:id="horasTotal" layoutX="1133.0" layoutY="227.0" maxWidth="145.0" prefHeight="26.0" prefWidth="58.0" />
-      <TextField fx:id="horaInicioM" layoutX="1131.0" layoutY="360.0" maxWidth="145.0" prefHeight="26.0" prefWidth="73.0" />
-      <TextField fx:id="horaFinM" layoutX="1131.0" layoutY="394.0" maxWidth="145.0" prefHeight="26.0" prefWidth="73.0" />
-      <TextField fx:id="horaInicioT" layoutX="1131.0" layoutY="428.0" maxWidth="145.0" prefHeight="26.0" prefWidth="74.0" />
-      <TextField fx:id="horaFinT" layoutX="1131.0" layoutY="462.0" maxWidth="145.0" prefHeight="26.0" prefWidth="74.0" />
       <Text fill="#822828" layoutX="1030.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Inicio:">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
@@ -48,17 +44,17 @@
             <Font name="Trebuchet MS" size="12.0" />
          </font>
       </Text>
-      <Text fill="#822828" layoutX="1029.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora fin mañana:">
+      <Text fill="#822828" layoutX="1029.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora fin mañana:">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
          </font>
       </Text>
-      <Text fill="#822828" layoutX="1028.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora inicio tarde:">
+      <Text fill="#822828" layoutX="1028.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora inicio tarde:">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
          </font>
       </Text>
-      <Text fill="#822828" layoutX="1036.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora fin tarde:">
+      <Text fill="#822828" layoutX="1036.0" layoutY="506.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora fin tarde:">
          <font>
             <Font name="Trebuchet MS" size="12.0" />
          </font>
@@ -177,5 +173,9 @@
         </columns>
       </TableView>
       <Label layoutX="1099.0" layoutY="84.0" text="Periodo FCTs y Horarios" />
+      <ComboBox fx:id="horaInicioM" layoutX="1128.0" layoutY="360.0" prefHeight="26.0" prefWidth="126.0" />
+      <ComboBox fx:id="horaFinM" layoutX="1128.0" layoutY="401.0" prefHeight="26.0" prefWidth="127.0" />
+      <ComboBox fx:id="horaInicioT" layoutX="1128.0" layoutY="447.0" prefHeight="26.0" prefWidth="127.0" />
+      <ComboBox fx:id="horaFinT" layoutX="1128.0" layoutY="489.0" prefHeight="26.0" prefWidth="127.0" />
    </children>
 </AnchorPane>
